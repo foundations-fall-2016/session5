@@ -181,7 +181,8 @@ Remove the float property and add flex:
 	article {}
 	
 	aside {}
-    ...
+    
+    /* ... */
 }
 ```
 
@@ -189,7 +190,7 @@ Change the column widths, remove the background image and add coloring css:
 
 ```css
 @media only screen and (min-width: 768px) {
-	...
+	/* ... */
     .content {
         display: flex;
     }
@@ -205,7 +206,25 @@ Change the column widths, remove the background image and add coloring css:
 ```
 ##Add an Image to the layout
 
+The image is located in the app/img directory.
+
+```html
+<img src="img/pesto.jpg" />
+```
+Make sure it fits into the containing element:
+```cssimg {
+    width: 100%;
+    height: auto;
+}
+```
+
 ##Use SVG for the Burst Graphic
+
+Start by using the exisitng css
+
+```css
+background: url('img/burst.svg') no-repeat;
+```
 
 ##JavaScript Beta Window
 
