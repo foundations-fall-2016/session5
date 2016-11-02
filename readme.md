@@ -8,12 +8,12 @@ Analysis in the device view indicates a horizontal scroll due to a combination o
 header h1 {
     /*transform: translateY(-80px) translateX(-100px);
 	padding-left: 260px;
-	padding-top: 90px;*/
+	padding-top: 90px;
 	background: url(img/basil.png) no-repeat;
 	font-family: FuturaStdLight, sans-serif; 
 	font-weight: normal;
 	color:#fff;
-	/*font-size: 5rem;*/
+	font-size: 5rem;*/
 }
 ```
 
@@ -36,7 +36,7 @@ article, aside {
     padding: 1rem;
 }
 ```
-Add back the features necessary for two column display on wide screens:
+2. add back the features necessary for two column display on wide screens:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -101,6 +101,14 @@ Large screen:
 Basic [usage](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ```css
+nav {
+    background: #e4e1d1;
+    border-top: 0.5rem solid #ebbd4e;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
 nav ul {
     display: flex;
 }
@@ -110,20 +118,11 @@ nav li {
     margin-right: 0.5rem;
 }
 
-nav {
-    background: #e4e1d1;
-    border-top: 0.5rem solid #ebbd4e;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-
 nav p {
     margin-right: auto;
 }
 
 ```
-
 
 
 ###Format Content
@@ -165,17 +164,6 @@ Animate Links
 ```
 or `transition: color 0.2s linear;`
 
-
-Footer
-
-```css
-footer {
-    clear: both;
-    background: #88A308;
-    border-radius: 0 0 8px 8px;
-    padding: 40px 10px 10px 1rem;
-    text-align: right;
-}
 ```
 
 ##Flex columns
@@ -199,7 +187,7 @@ Remove the float property and add flex:
 }
 ```
 
-CHange the column widths, remove the background image and add coloring css:
+Change the column widths, remove the background image and add coloring css:
 
 ```css
 @media only screen and (min-width: 768px) {
@@ -214,26 +202,10 @@ CHange the column widths, remove the background image and add coloring css:
         background: #F5FAEF;
         box-shadow: -4px 0px 4px #ddd;
     }
-    ...
+    
 }
 ```
-
-##Homework
-
-Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
-
-http://daniel.deverell.com/css-files/_midterm-files.zip
-
-1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
-
-##Reading
-Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
-
-##NOTES
-
 ##Add an Image to the layout
-
-
 
 ##Use SVG for the Burst Graphic
 
@@ -436,6 +408,16 @@ $('header a, .betainfo div a').click(
 );
 </script>
 ```
+
+
+##Homework
+
+1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+
+##Reading
+Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
+
+##NOTES
 
 
 ###CSS Starburst
