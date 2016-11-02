@@ -1,0 +1,144 @@
+@import url(futura/stylesheet.css);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: #88A308;
+    color: #fff;
+    text-shadow: none;
+}
+
+.cf:before, .cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+body {
+    font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+    color: #333;
+    max-width: 840px;
+    margin: 0 auto;
+    margin-top: 24px;
+}
+
+header {
+    position: relative;
+    height: 120px;
+    background: #88a308;
+    border-radius: 8px 8px 0px 0px;
+}
+
+header h1 {
+    transform: translateY(-80px) translateX(-100px);
+    padding-left: 260px;
+    padding-top: 90px;
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    font-size: 5rem;
+}
+
+header a.beta {
+    background: url("img/beta.png") no-repeat;
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    z-index: 300;
+    top: -20px;
+    right: 10px;
+    width: 85px;
+    height: 85px;
+    line-height: 85px;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(20deg);
+    transform: rotate(20deg);
+    transition: all 1s ease;
+}
+
+header a.beta:hover {
+    transform: rotate(0deg) scale(1.2);
+}
+
+nav {
+    background: #e4e1d1;
+    border-top: 0.5rem solid #ebbd4e;
+    padding: 0.5rem;
+    float: left;
+    width: calc(100% - 1rem);
+}
+
+nav ul {
+    float: right;
+}
+
+nav li {
+    float: left;
+    list-style: none;
+    margin-right: 0.5rem;
+}
+
+nav a {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 8px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+nav p {
+    float: left;
+}
+
+.cssgradients .nav-storeit a {
+    background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
+    border-radius: 6px;
+}
+
+.cssgradients .nav-storeit a:hover {
+    background: linear-gradient(to bottom, #fcde41 1%, #dfa910 99%);
+}
+
+.cssgradients .nav-pickit a {
+    background: linear-gradient(to bottom, #ABC841 0%, #6B861E 100%);
+    border-radius: 6px;
+}
+
+.cssgradients .nav-pickit a:hover {
+    background: linear-gradient(to bottom, #6B861E 1%, #ABC841 99%);
+}
+
+.cssgradients .nav-cookit a {
+    background: linear-gradient(to bottom, #6F89C7 0%, #344E8B 100%);
+    border-radius: 6px;
+}
+
+.cssgradients .nav-cookit a:hover {
+    background: linear-gradient(to bottom, #344E8B 1%, #6F89C7 99%);
+}
+
+.content {
+    background: url(img/html.png) repeat-y 50% 50%;
+}
+
+article, aside {
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 50%;
+    float: left;
+}
+
+footer {
+    clear: both;
+    background: #88A308;
+    border-radius: 0 0 8px 8px;
+    padding: 40px 10px 10px 1rem;
+    text-align: right;
+}

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="foundationssession5">FOUNDATIONS session 5</h1>
+
+<h2 id="mobilefirstapproach">Mobile First Approach</h2>
+
+<p>Analysis in the device view indicates a horizontal scroll due to a combination of settings. Comment out the offenders:</p>
+
+<pre><code class="css">header h1 {
+    /*transform: translateY(-80px) translateX(-100px);
+    padding-left: 260px;
+    padding-top: 90px;*/
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    /*font-size: 5rem;*/
+}
+</code></pre>
+
+<pre><code class="css">/*article, aside {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding: 1rem;
+}*/
+</code></pre>
+
+<pre><code class="css">article, aside {
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .content {
+        background: url('img/html.png') repeat-y 50% 50%;
+    }
+    article {
+        float: left;
+        width: 50%;
+    }
+    aside {
+        float: left;
+        width: 50%;
+    }
+}
+</code></pre>
+
+<h3 id="headerbranding">Header Branding</h3>
+
+<p>Small screen:</p>
+
+<pre><code class="css">
+header {
+    ...
+    height: 80px;
+}
+
+header h1 {
+    transform: translateY(10px) translateX(30px);
+    font-family: FuturaStdLight, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    font-size: 3rem;
+}
+
+</code></pre>
+
+<p>Large screen:</p>
+
+<pre><code class="css">@media only screen and (min-width: 768px) {
+
+    ...
+
+    header {
+        height: 120px;
+    }
+
+    header h1 {
+        transform: translateY(-80px) translateX(-100px);
+        padding-left: 260px;
+        padding-top: 90px;
+        background: url(img/basil.png) no-repeat;
+        font-size: 5rem;
+    }
+}
+</code></pre>
+
+<h3 id="navigationflexbox">Navigation Flexbox</h3>
+
+<pre><code class="css">nav ul {
+    display: flex;
+}
+
+nav li {
+    list-style: none;
+    margin-right: 0.5rem;
+}
+
+nav {
+    background: #e4e1d1;
+    border-top: 0.5rem solid #ebbd4e;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+nav p {
+    margin-right: auto;
+}
+
+</code></pre>
+
+<h3 id="formatcontent">Format Content</h3>
+
+<pre><code class="css">h2, h3 {
+    color: #88a308;
+    margin: 8px 0;
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+}
+
+a {
+    color: #f90;
+    text-decoration: none;
+    transition: color 0.5s linear;
+}
+li &gt; h4 {
+    margin-top: 12px;
+}
+aside li {
+    list-style: none;
+}
+article li, article ol {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+</code></pre>
+
+<p>Animate Links</p>
+
+<pre><code class="css">.content a:hover {
+    color: #88a308;
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+</code></pre>
+
+<p>or <code>transition: color 0.2s linear;</code></p>
+
+<p>Footer</p>
+
+<pre><code class="css">footer {
+    clear: both;
+    background: #88A308;
+    border-radius: 0 0 8px 8px;
+    padding: 40px 10px 10px 1rem;
+    text-align: right;
+}
+</code></pre>
+
+<h2 id="flexcolumns">Flex columns</h2>
+
+<p>Refactor the article and aside columns to use flexbox. (Applies only to widescreen view.)</p>
+
+<p>Remove the float property and add flex:</p>
+
+<pre><code class="css">@media only screen and (min-width: 768px) {
+    ...
+    .content {
+    background: url('img/html.png') repeat-y 50% 50%;
+    display: flex;
+    }
+    
+    article {}
+    
+    aside {}
+    ...
+}
+</code></pre>
+
+<p>CHange the column widths, remove the background image and add coloring css:</p>
+
+<pre><code class="css">@media only screen and (min-width: 768px) {
+    ...
+    .content {
+        display: flex;
+    }
+    article {
+        flex: 1 0 60%;
+    }
+    aside {
+        background: #F5FAEF;
+        box-shadow: -4px 0px 4px #ddd;
+    }
+    ...
+}
+</code></pre>
+
+<h2 id="homework">Homework</h2>
+
+<p>Midterm files are located <a href="http://daniel.deverell.com/css-files/_midterm-files.zip">here</a>.</p>
+
+<p>http://daniel.deverell.com/css-files/_midterm-files.zip</p>
+
+<ol>
+<li>Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.</li>
+</ol>
+
+<h2 id="reading">Reading</h2>
+
+<p>Flexbox <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">the basics</a>. </p>
+
+<h2 id="notes">NOTES</h2>
+
+<h2 id="addanimagetothelayout">Add an Image to the layout</h2>
+
+<h2 id="usesvgfortheburstgraphic">Use SVG for the Burst Graphic</h2>
+
+<h2 id="javascriptbetawindow">JavaScript Beta Window</h2>
+
+<p>Build the window:</p>
+
+<pre><code class="html">&lt;div class=&quot;betainfo&quot;&gt;
+    &lt;p&gt;Information about the beta program.&lt;p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="css">.betainfo {
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid #EABC5A;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 20000;
+    top: 100px;
+    left: calc(50% - 108px);
+    // could also use a negtive margin
+}
+
+.emphasis {
+    color: red;
+}
+</code></pre>
+
+<p>Then try this to center the box:</p>
+
+<p><code>left:calc(50% - 100px);</code></p>
+
+<p>Let&#8217;s load jQuery:</p>
+
+<p><code>&lt;script src=&quot;http://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;</code></p>
+
+<p>Try this in the head first then before the closing of the page:</p>
+
+<pre><code class="html">&lt;script&gt;
+    jQuery('.betainfo p').addClass('emphasis');
+&lt;/script&gt;
+</code></pre>
+
+<p>Short form:</p>
+
+<pre><code class="html">&lt;script&gt;
+    $('.betainfo p').addClass('emphasis');
+&lt;/script&gt;
+</code></pre>
+
+<p>Examine the html in the inspector.</p>
+
+<p>Note: this version would work in the header:</p>
+
+<pre><code class="js">&lt;script&gt;
+$(document).ready(function() {
+    $('.betainfo p').addClass('emphasis');
+});
+&lt;/script&gt;
+</code></pre>
+
+<p>All of jQuery&#8217;s methods are documented at <a href="http://api.jquery.com">http://api.jquery.com</a></p>
+
+<p>Adding a click event requires a function:</p>
+
+<pre><code class="js">&lt;script&gt;
+    $('.betainfo p').click( 
+        function() {
+            alert('test');
+        }
+    );
+&lt;/script&gt;
+</code></pre>
+
+<p>You can send messages to the inspector&#8217;s console:</p>
+
+<pre><code class="js">&lt;script&gt;
+    $('.betainfo p').click(
+        function() {
+            console.log('test');
+        }
+    );s
+&lt;/script&gt;
+</code></pre>
+
+<p>Let&#8217;s use the <code>this</code> keyword to target the thing that was clicked on. We use toggleClass to add and remove the class:</p>
+
+<pre><code class="js">&lt;script&gt;
+    $('.betainfo p').click( 
+        function() {
+            $(this).toggleClass('emphasis');
+        }
+    );
+&lt;/script&gt;
+</code></pre>
+
+<p>Add <code>display: none;</code> to the <code>.betainfo</code> css rule:</p>
+
+<pre><code class="js">&lt;script&gt;
+    $('header a').click( 
+        function() {
+            $('.betainfo').toggle();
+        }
+    );
+&lt;/script&gt;
+</code></pre>
+
+<p>Change to fadeToggle and note the animation running in the inspector:</p>
+
+<pre><code class="js">&lt;script&gt;
+    $('header a').click( 
+        function() {
+            $('.betainfo').fadeToggle();
+        }
+    );
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="anotherclosemethod">Another Close Method</h3>
+
+<p>Add html to the betainfo:</p>
+
+<pre><code class="html">&lt;div class=&quot;betainfo&quot;&gt;
+    &lt;p&gt;Information about the beta program.&lt;p&gt;
+    &lt;a class=&quot;closer&quot; href=&quot;#0&quot;&gt;X&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Style it:</p>
+
+<pre><code class="css">.closer {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #fff;
+    border: 2px solid #EABC5A;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.5rem;
+    font-weight: bold;
+}
+</code></pre>
+
+<p>Add a selector to the script:</p>
+
+<pre><code class="js">&lt;script&gt;
+$('header a, .betainfo div a').click( 
+    function() {
+        $('.betainfo').fadeToggle();
+    }
+);
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="fadethebackground">Fade the Background</h3>
+
+<p>See <a href="http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/">this article</a> for additional techniques.</p>
+
+<p>Create a new div in the html:</p>
+
+<p><code>&lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;</code></p>
+
+<pre><code>.overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+</code></pre>
+
+<p>Add the overlay to the <a href="http://api.jquery.com/fadeToggle/">fadeToggle</a>:</p>
+
+<pre><code class="js">&lt;script&gt;
+$('header a, .betainfo div a').click( 
+    function() {
+        $('.betainfo, .overlay').fadeToggle();
+    }
+);
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="cssstarburst">CSS Starburst</h3>
+
+<pre><code>&lt;body&gt;
+&lt;div class=&quot;rect-container&quot;&gt;
+&lt;div class=&quot;rect copy&quot;&gt;Beta!&lt;/div&gt;
+&lt;div class=&quot;rect one&quot;&gt; &lt;/div&gt;
+&lt;div class=&quot;rect two&quot;&gt; &lt;/div&gt;
+&lt;div class=&quot;rect three&quot;&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>add styles</p>
+
+<p>```
+<style>
+.copy {
+ color: #fff;
+ z-index: 999;
+ font-size: 90px;
+ text-align: center;
+ line-height: 200px;
+}
+.rect-container {
+ width: 200px;
+ height: 200px;
+ position: relative;
+ top: 100px;
+ left: 100px;
+ -webkit-transform: scale(.4) rotate(15deg);
+ cursor: pointer;
+ -webkit-transition: all 0.2s linear;
+}
+.rect-container:hover { -webkit-transform: scale(.5) rotate(0deg) }
+.rect {
+ width: 200px;
+ height: 200px;
+ background: #f90;
+ -webkit-transform: rotate(0deg);
+ position: absolute;
+ top: 0;
+ left: 0;
+}
+.two { -webkit-transform: rotate(30deg) }
+.three { -webkit-transform: rotate(60deg) }</p>
+
+<p></style></p>
+
+<h3 id="taphighlightcolor">Tap Highlight Color</h3>
+
+</body>
+</html>

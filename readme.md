@@ -1,8 +1,123 @@
 #FOUNDATIONS session 5
 
-Midterm files are located [here](http://daniel.deverell.com/css-files/_midterm-files.zip).
+##Mobile First Approach
 
-http://daniel.deverell.com/css-files/_midterm-files.zip
+Analysis in the device view indicates a horizontal scroll due to a combination of settings. Comment out the offenders:
+
+```css
+header h1 {
+    /*transform: translateY(-80px) translateX(-100px);
+	padding-left: 260px;
+	padding-top: 90px;*/
+	background: url(img/basil.png) no-repeat;
+	font-family: FuturaStdLight, sans-serif; 
+	font-weight: normal;
+	color:#fff;
+	/*font-size: 5rem;*/
+}
+```
+
+
+```css
+/*article, aside {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding: 1rem;
+}*/
+```
+
+
+```css
+article, aside {
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .content {
+        background: url('img/html.png') repeat-y 50% 50%;
+    }
+    article {
+        float: left;
+        width: 50%;
+    }
+    aside {
+        float: left;
+        width: 50%;
+    }
+}
+```
+
+###Header Branding
+
+Small screen:
+
+```css
+
+header {
+    ...
+    height: 80px;
+}
+
+header h1 {
+    transform: translateY(10px) translateX(30px);
+    font-family: FuturaStdLight, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    font-size: 3rem;
+}
+
+```
+
+Large screen:
+
+```css
+@media only screen and (min-width: 768px) {
+
+	...
+
+	header {
+        height: 120px;
+    }
+
+    header h1 {
+        transform: translateY(-80px) translateX(-100px);
+        padding-left: 260px;
+        padding-top: 90px;
+        background: url(img/basil.png) no-repeat;
+        font-size: 5rem;
+    }
+}
+```
+
+###Navigation Flexbox
+
+```css
+nav ul {
+    display: flex;
+}
+
+nav li {
+    list-style: none;
+    margin-right: 0.5rem;
+}
+
+nav {
+    background: #e4e1d1;
+    border-top: 0.5rem solid #ebbd4e;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+nav p {
+    margin-right: auto;
+}
+
+```
+
+
 
 ###Format Content
 
