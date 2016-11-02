@@ -222,8 +222,6 @@ img {
 
 ##Use SVG for the Burst Graphic
 
-Start by using the exisitng css
-
 ```
 background: url('img/burst.svg') no-repeat;
 ```
