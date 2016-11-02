@@ -26,14 +26,19 @@ header h1 {
     padding: 1rem;
 }*/
 ```
+Implement a mobile first strategy
 
+1. stack the article and aside on top of each other in small screen:
 
 ```css
 article, aside {
     box-sizing: border-box;
     padding: 1rem;
 }
+```
+Add back the features necessary for two column display on wide screens:
 
+```css
 @media only screen and (min-width: 768px) {
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
@@ -49,7 +54,7 @@ article, aside {
 }
 ```
 
-###Header Branding
+###Header Branding Responsive Design
 
 Small screen:
 
@@ -92,6 +97,8 @@ Large screen:
 ```
 
 ###Navigation Flexbox
+
+Basic [usage](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ```css
 nav ul {
