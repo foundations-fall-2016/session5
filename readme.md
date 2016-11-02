@@ -212,6 +212,7 @@ The image is located in the app/img directory.
 <img src="img/pesto.jpg" />
 ```
 Make sure it fits into the containing element:
+
 ```css
 img {
     width: 100%;
