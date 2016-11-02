@@ -164,8 +164,6 @@ Animate Links
 ```
 or `transition: color 0.2s linear;`
 
-```
-
 ##Flex columns
 
 Refactor the article and aside columns to use flexbox. (Applies only to widescreen view.)
