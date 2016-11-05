@@ -475,6 +475,7 @@ $('header a, .betainfo a, .overlay').click(
     transition: opacity 1s linear;
 }
 ```
+```
 .betainfo {
     /*display: none;*/
     opacity: 0;
@@ -492,6 +493,8 @@ $('header a, .betainfo a, .overlay').click(
 1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
 
 ##Reading
+Jeremy Keith, DOM Scripting, chapters 1-3
+
 Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
 
 ##NOTES
