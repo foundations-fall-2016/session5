@@ -1,5 +1,7 @@
 #FOUNDATIONS session 5
 
+My final files for this session are available on the [mysession5 github repo](https://github.com/DannyBoyNYC/mysession5).
+
 ##Mobile First Approach
 
 Analysis in the device view indicates a horizontal scroll due to a combination of settings. Comment out the offenders:
