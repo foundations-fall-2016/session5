@@ -8,7 +8,11 @@
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
 
-## Terminal Basics
+## Node Package Manager
+
+[Node](https://nodejs.org/en/)
+
+[Node Package Manager](https://www.npmjs.com) 
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
@@ -17,53 +21,19 @@ $ls -al  // flags expand the command
 $ pwd
 ```
 
-Look at tab completion, `..` and copy paste.
+NB - Tab completion, `..` and copy paste.
+
+Last class we ran:
 
 ```
-$ cd <definition-list>
-$ python -m SimpleHTTPServer 9001
-```
-
-Go to http://localhost:9001 in your browser
-
-Examine the Terminal to see activity.
-
-Multiple Terminal tabs. ctrl-c to stop the Python server.
-
-## Node Package Manager
-
-Warning - this is going to seem like a lot but this system is an essential part of web design. 
-
-Download and install [Node](https://nodejs.org/en/)
-
-NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
-
-```
-$ cd <session-4> // or copy and paste the folder you want to go to
+$ cd <session-5> // or copy and paste the folder you want to go to
 $ npm init
 $ npm install browser-sync --save
 ```
 
-Note package.json and node_modules folder
+to create package.json and install [Browser Sync](https://www.browsersync.io)  into the node_modules folder. 
 
-[Browser Sync](https://www.browsersync.io) 
-
-```
-  "scripts": {
-    "start": "browser-sync start --server 'app' --files 'app'"
-  },
-```
-
-```
-$ npm run start
-```
-
-Review browser Sync @ 3001
-
-[Documentation](https://browsersync.io/docs)
-[Github Repo](https://github.com/BrowserSync/browser-sync)
-
-Demo `npm install` on `dev` branch
+We created two scripts"
 
 ```
   "scripts": {
@@ -71,6 +41,27 @@ Demo `npm install` on `dev` branch
     "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
   },
 ```
+
+Which can be run from the terminal using:
+
+```
+$ npm run start
+```
+
+or: 
+
+```
+$ npm run startUp
+```
+
+Depending on the task.
+
+[Documentation](https://browsersync.io/docs) for Browser Sync commands.
+
+Note the --save, that created an entry in package.json.
+
+Demo `npm install` 
+
 
 ## Definition List
 
@@ -431,6 +422,7 @@ article, aside {
     padding: 1rem;
 }
 ```
+
 2. add back the features necessary for two column display on wide screens:
 
 ```css
@@ -599,6 +591,7 @@ Change the column widths, remove the background image and add coloring css:
     
 }
 ```
+
 ## Add an Image to the layout
 
 The image is located in the app/img directory.
