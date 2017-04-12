@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Menu Highlights</title>
-<link rel="stylesheet" href="css/styles.css">
+	<title>Menu Highlights</title>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<div class="menu-list">
-	<dl>
-		<dt>Spicy Tuna Roll</dt>
-		<dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
-		<dd>Our specialty - spicy tuna rolls. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
-	</dl>
-	<dl>
-		<dt>Sushi for Two</dt>
-		<dd><a href="img/2-lg.jpg"><img src="img/2.jpg" title="Tuna roll" alt="Sushi for Two"></a></dd>
-		<dd>Enjoy a special treat for two. Orders also available for three or more.</dd>
-	</dl>
-	<dl>
-		<dt>Omikase</dt>
-		<dd><a href="img/3-lg.jpg"><img src="img/3.jpg" title="Tuna roll" alt="Omikase"></a></dd>
-		<dd>Allow our executive chef to prepare a special selection of the day's top choices.</dd>
-	</dl>
-<div class="popover">
-	<img src="img/1-lg.jpg" />
-</div>
-</div>
-<script>
-var popover = document.querySelector('.popover')
-var popoverImage = popover.querySelector('.popover img')
+	<div class="menu-list">
+		<dl>
+			<dt>Spicy Tuna Roll</dt>
+			<dd><a href="img/1-lg.jpg"><img src="img/1.jpg" title="Tuna roll" alt="Tuna Roll"></a></dd>
+			<dd>Our specialty - spicy tuna rolls. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
+		</dl>
+		<dl>
+			<dt>Sushi for Two</dt>
+			<dd><a href="img/2-lg.jpg"><img src="img/2.jpg" title="Tuna roll" alt="Sushi for Two"></a></dd>
+			<dd>Enjoy a special treat for two. Orders also available for three or more.</dd>
+		</dl>
+		<dl>
+			<dt>Omikase</dt>
+			<dd><a href="img/3-lg.jpg"><img src="img/3.jpg" title="Tuna roll" alt="Omikase"></a></dd>
+			<dd>Allow our executive chef to prepare a special selection of the day's top choices.</dd>
+		</dl>
+		<div class="popover">
+			<img src="img/1-lg.jpg" />
+		</div>
+	</div>
 
-var linkedImages = document.querySelectorAll('a')
-var imageLinks = [...linkedImages]
-imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+	<script>
+		var popover = document.querySelector('.popover')
+		var popoverImage = popover.querySelector('.popover img')
 
-function run() {
-	popoverImage.setAttribute('src', this.href)
-	popover.classList.toggle('showme')
-	event.preventDefault();
-}
-</script>
+		var linkedImages = document.querySelectorAll('a')
+		var imageLinks = [...linkedImages]
+		imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+
+		function run() {
+			popoverImage.setAttribute('src', this.href)
+			popover.classList.toggle('showme')
+			event.preventDefault();
+		}
+	</script>
 </body>
 </html>
 

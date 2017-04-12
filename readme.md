@@ -1,8 +1,401 @@
 #FOUNDATIONS session 5
 
-My final files for this session are available on the [mysession5 github repo](https://github.com/DannyBoyNYC/mysession5).
+## Homework
 
-##Mobile First Approach
+1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+
+## Reading
+
+* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
+
+## Terminal Basics
+
+```
+$ cd <PATH> // copy and paste the folder you want to go to
+$ ls 
+$ls -al  // flags expand the command
+$ pwd
+```
+
+Look at tab completion, `..` and copy paste.
+
+```
+$ cd <definition-list>
+$ python -m SimpleHTTPServer 9001
+```
+
+Go to http://localhost:9001 in your browser
+
+Examine the Terminal to see activity.
+
+Multiple Terminal tabs. ctrl-c to stop the Python server.
+
+## Node Package Manager
+
+Warning - this is going to seem like a lot but this system is an essential part of web design. 
+
+Download and install [Node](https://nodejs.org/en/)
+
+NPM - [Node Package Manager](https://www.npmjs.com) - not unlike Package Control for Sublime text but much more powerful.
+
+```
+$ cd <session-4> // or copy and paste the folder you want to go to
+$ npm init
+$ npm install browser-sync --save
+```
+
+Note package.json and node_modules folder
+
+[Browser Sync](https://www.browsersync.io) 
+
+```
+  "scripts": {
+    "start": "browser-sync start --server 'app' --files 'app'"
+  },
+```
+
+```
+$ npm run start
+```
+
+Review browser Sync @ 3001
+
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
+
+Demo `npm install` on `dev` branch
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
+  },
+```
+
+## Definition List
+
+### JS Review
+
+Popover div:
+
+```
+<div class="popover">
+    <img src="img/1-lg.jpg" />
+</div>
+```
+
+Styles:
+
+```
+.popover {
+    position: absolute;
+    top: 30%;
+    display: none;
+}
+.showme {
+    display: block;
+}
+```
+
+Select one of the links:
+
+```
+var linkedImage = document.querySelector('a')
+console.log(linkedImage)
+```
+
+Edit to select ALL of the links:
+
+```
+var linkedImages = document.querySelectorAll('a')
+console.log(linkedImages)
+```
+
+use `.forEach` to attach an event listener to each link:
+
+```
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+
+function run() {
+event.preventDefault();
+}
+```
+
+Now we need to create a reference to the popover:
+
+```
+var popover = document.querySelector('.popover')
+var popoverImage = popover.querySelector('.popover img')
+```
+
+Note the second line where we use popover.querySelector instead of document.querySelector.
+
+Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
+
+```
+function run() {
+    popoverImage.setAttribute('src', this.href)
+    popover.classList.toggle('showme')
+    event.preventDefault();
+}
+```
+
+Here is the entire JavaScript:
+
+```
+var popover = document.querySelector('.popover')
+var popoverImage = popover.querySelector('.popover img')
+
+var linkedImages = document.querySelectorAll('a')
+var imageLinks = [...linkedImages]
+imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
+
+function run() {
+    popoverImage.setAttribute('src', this.href)
+    popover.classList.toggle('showme')
+    event.preventDefault();
+}
+```
+
+
+## Basilica
+
+`$ npm run start`
+
+Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
+
+Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document). The document contains 2 script tags. Examine the page in the browser's dev tools. Note the console message and the classes applied to the html tag.
+
+
+![Image of Basilica](FINAL.png)
+
+
+```css
+* { 
+    margin:0; 
+    padding:0; 
+}
+body { 
+   font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; 
+   color : #333;
+   max-width: 840px;
+   margin: 0 auto;
+   margin-top: 24px;
+} 
+article, aside {
+    float: left;
+    width : 50%;
+    padding : 16px;
+}
+```
+
+Note the use of margin on the body element. 
+
+Add `box-sizing: border-box;` to the article / aside rule.
+
+Note the footer. Because both columns have been floated it can wrap.
+
+```css
+footer {
+    clear: both;
+}
+```
+
+### Faux columns
+
+Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
+
+```css
+.content { 
+  background : url(img/html.png) repeat-y 50% 50%;
+}
+```
+Note that we cannot see the background image. The content div has collapsed because its direct children have been floated. We have looked at a number of methods that can be used to prevent collapsing. E.g.:
+
+```css
+.content { 
+  background : url(img/html.png) repeat-y 50% 50%;
+  float: left;
+}
+```
+
+Here we will use the clear fix method. 
+
+### ::Pseudo-elements vs :Pseudo-classes
+
+```
+::first-letter      :hover
+::first-line        :visited
+::before            :link
+::after             :active
+::selection         :target
+                    :focus
+```
+
+[Ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-elements.
+
+e.g.: Selected text:
+
+```
+::selection { 
+    background:#88A308; 
+    color:#fff; 
+    text-shadow: none; 
+}
+```
+
+Print out (with media query)
+
+```
+@media print {
+  a[href]:after {
+    content: " (" attr(href) ") ";
+  }
+}
+```
+
+### Clearfix
+
+_Disable the float:left rule on the content._
+
+```
+.content:after { 
+    content:"boo"; 
+    display:block; 
+    clear:both; 
+}
+```
+
+```
+.content:after { 
+    content:"."; 
+    display:block; 
+    height:0; 
+    clear:both; 
+    visibility:hidden; 
+}
+```
+
+The method uses `:after` to insert a character after the div and then sets it to `display: block` and `clear: both` to prevent collapsing and then hides it.
+
+Since box collapsing is rather common let's create a generic class that we can use elsewhere.
+
+Update the method to something shorter and more modern and apply the cf classname to the content div:
+
+```css
+.cf:before, .cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+```
+
+Examine the html in the inspector. Look for `::before` and `::after`. We'll return to the :before and :after pseudo-classes later.
+
+## The Branding Header
+
+Add the green background to the branding div.
+
+```css
+header {
+    position: relative;
+    height: 120px;
+    background: #88a308;
+    border-radius: 8px 8px 0px 0px;
+}
+```
+
+Add absolute positioning and create a viewable area for the image on the `<h1>`. (Note: we can get the image dimensions via the inspector.) 
+
+`@import url(futura/stylesheet.css);`
+
+```css
+header h1 { 
+    position: absolute; 
+    top: -80px; 
+    left:-100px;
+    z-index: 90;
+    padding-left: 260px;
+    padding-top: 90px;
+    background: url(img/basil.png) no-repeat;
+    font-family: FuturaStdLight, sans-serif; 
+    font-weight: normal;
+    color:#fff;
+    font-size: 5rem;
+}
+```
+
+The absolute positioning technique is complex, let's use an alternative:
+
+```css
+header h1 {
+    transform: translateY(-80px) translateX(-100px);
+    ...
+}
+```
+
+Note:
+
+```html
+<header>
+    <h1>Basilica!</h1>
+    <a class="beta" href="#">Beta</a>
+</header>
+```
+
+Note the current position of the beta link. We could collapse the `<h1>` with a float:
+
+```css
+header h1 {
+    ...
+    float: left;
+}
+```
+
+This allows the beta to situate itself but has unwanted effects on the other elements of the page.
+
+But given our design if might be better to absolutely position the beta element. 
+
+```css
+header a.beta {
+    background: url("img/beta.png") no-repeat;
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute; 
+    z-index: 300;
+    top: -20px;
+    right: 10px;
+    width: 85px;
+    height: 85px;
+    line-height: 85px;
+    text-align: center;
+    text-transform: uppercase;
+}
+```
+
+Whew!
+
+```css
+header a.beta {
+    ...
+    transform: rotate(20deg);
+    transition: all 1s ease;
+}
+```
+
+```css
+header a.beta:hover {
+    transform: rotate(0deg) scale(1.2);
+}
+```
+
+
+## Mobile First Approach
 
 Analysis in the device view indicates a horizontal scroll due to a combination of settings. Comment out the offenders:
 
@@ -56,7 +449,7 @@ article, aside {
 }
 ```
 
-###Header Branding Responsive Design
+### Header Branding Responsive Design
 
 Small screen:
 
@@ -98,7 +491,7 @@ Large screen:
 }
 ```
 
-###Navigation Flexbox
+### Navigation Flexbox
 
 Basic [usage](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
@@ -127,7 +520,7 @@ nav p {
 ```
 
 
-###Format Content
+### Format Content
 
 ```css
 h2, h3 {
@@ -166,7 +559,7 @@ Animate Links
 ```
 or `transition: color 0.2s linear;`
 
-##Flex columns
+## Flex columns
 
 Refactor the article and aside columns to use flexbox. (Applies only to widescreen view.)
 
@@ -206,7 +599,7 @@ Change the column widths, remove the background image and add coloring css:
     
 }
 ```
-##Add an Image to the layout
+## Add an Image to the layout
 
 The image is located in the app/img directory.
 
@@ -222,13 +615,13 @@ img {
 }
 ```
 
-##Use SVG for the Burst Graphic
+## Use SVG for the Burst Graphic
 
 ```
 background: url('img/burst.svg') no-repeat;
 ```
 
-##JavaScript Beta Window
+## JavaScript Beta Window
 
 Build the window:
 
@@ -355,7 +748,7 @@ Change to fadeToggle and note the animation running in the inspector:
 </script>
 ```
 
-###Another Close Method
+### Another Close Method
 
 Add html to the betainfo:
 
@@ -396,7 +789,7 @@ $('header a, .betainfo a').click(
 </script>
 ```
 
-###Fade the Background
+### Fade the Background
 
 See [this article](http://tympanus.net/codrops/2013/11/07/css-overlay-techniques/) for additional techniques.
 
@@ -490,19 +883,13 @@ $('header a, .betainfo a, .overlay').click(
     opacity: 0;
 ```
 
-##Homework
-
-1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
-
-##Reading
-Jeremy Keith, DOM Scripting, chapters 1-3
-
-Flexbox [the basics](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). 
-
-##NOTES
 
 
-###CSS Starburst
+
+## NOTES
+
+
+### CSS Starburst
 
 ```
 <body>
