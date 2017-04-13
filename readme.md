@@ -668,6 +668,7 @@ Build the window:
     z-index: 2000;
     top: 100px;
     left: 50%;
+    // could also use a negative margin
 }
 
 .emphasis {
@@ -681,7 +682,7 @@ Then try this to center the box:
 
 
 
-### Close Method
+### Another Close Method
 
 Add html to the betainfo:
 
@@ -712,6 +713,48 @@ Style it:
 
 
 ## NOTES
+
+```
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+```
+
+and
+
+```
+...85" filter="url(#f1)"/>
+```
+
+equals
+
+```
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+    <defs>
+    <style>.cls-1{fill:#f38f40;}</style>
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+    </defs>
+    <title>Artboard 1-toc</title>
+    <polygon class="cls-1" points="32.05 19.85 33.89 18 32.05 16.15 33.35 13.89 31.09 12.58 31.64 10.05 29 9.38 29 7 26.62 7 25.95 4.36 23.42 4.97 22.11 2.68 19.85 3.97 18 2.11 16.15 3.96 13.89 2.65 12.58 4.91 10.05 4.36 9.38 7 7 7 7 9.38 4.36 10.05 4.97 12.58 2.68 13.89 3.97 16.15 2.11 18 3.96 19.85 2.65 22.11 4.91 23.42 4.36 25.95 7 26.62 7 29 9.38 29 10.05 31.64 12.58 31.03 13.89 33.32 16.15 32.03 18 33.89 19.85 32.04 22.11 33.35 23.42 31.09 25.95 31.64 26.62 29 29 29 29 26.62 31.64 25.95 31.03 23.42 33.32 22.11 32.05 19.85" filter="url(#f1)"/></svg>
+```
+
+add blur on alpha channel
+
+```
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+    <defs>
+        <style>.cls-1{fill:#f38f40;}</style>
+        <filter id="f1" x="0" y="0">
+            <feOffset result = "offOut" in = "SourceAlpha"  dx="1" dy="1" />
+            <feGaussianBlur result = "blurOut" in = "offOut" stdDeviation="1" />
+            <feBlend in = "SourceGraphic" in2 = "blurOut" mode = "normal"/>
+        </filter>
+    </defs>
+    <title>Artboard 1-toc</title>
+    <polygon class="cls-1" points="32.05 19.85 33.89 18 32.05 16.15 33.35 13.89 31.09 12.58 31.64 10.05 29 9.38 29 7 26.62 7 25.95 4.36 23.42 4.97 22.11 2.68 19.85 3.97 18 2.11 16.15 3.96 13.89 2.65 12.58 4.91 10.05 4.36 9.38 7 7 7 7 9.38 4.36 10.05 4.97 12.58 2.68 13.89 3.97 16.15 2.11 18 3.96 19.85 2.65 22.11 4.91 23.42 4.36 25.95 7 26.62 7 29 9.38 29 10.05 31.64 12.58 31.03 13.89 33.32 16.15 32.03 18 33.89 19.85 32.04 22.11 33.35 23.42 31.09 25.95 31.64 26.62 29 29 29 29 26.62 31.64 25.95 31.03 23.42 33.32 22.11 32.05 19.85" filter="url(#f1)"/></svg>
+```
 
 Tap Highlight Color
 
