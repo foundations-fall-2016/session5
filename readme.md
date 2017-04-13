@@ -200,8 +200,16 @@ These are applied using:
 <property> : var(--basil-green);
 ```
 
+Responsive Images:
 
+```css
+img {
+    width: 100%;
+    height: auto;
+}
+```
 
+Starter formatting:
 
 ```css
 * { 
@@ -224,14 +232,7 @@ article, aside {
 
 Note the use of max-width on the body selector. We applied it to a div in the past.
 
-```css
-img {
-    width: 100%;
-    height: auto;
-}
-```
-
-Note the use of margin on the body element. 
+Note the use of margin on the body element. We applied it to a div in the past.
 
 Add `box-sizing: border-box;` to the article / aside rule.
 
@@ -252,11 +253,14 @@ footer {
 
 Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
 
+Examine the background image.
+
 ```css
 .content { 
   background : url(img/html.png) repeat-y 50% 50%;
 }
 ```
+
 Note that we cannot see the background image. The content div has collapsed because its direct children have been floated. We have looked at a number of methods that can be used to prevent collapsing. E.g.:
 
 ```css
@@ -292,7 +296,7 @@ e.g.: Selected text:
 
 ### Clearfix
 
-_Disable the float:left rule on the content._
+_Disable the float:left rule on the content before applying these._
 
 ```
 .content:after { 
@@ -329,7 +333,7 @@ Update the method to something shorter and more modern and apply the cf classnam
 }
 ```
 
-Examine the html in the inspector. Look for `::before` and `::after`. We'll return to the :before and :after pseudo-classes later.
+Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the :before and :after pseudo-classes later.
 
 ## Mobile Layout with Floats
 
@@ -341,7 +345,6 @@ Examine the html in the inspector. Look for `::before` and `::after`. We'll retu
 }
 
 article, aside {
-    box-sizing: border-box;
     padding: 1rem;
 }
 ```
@@ -364,6 +367,14 @@ article, aside {
 }
 ```
 
+Try to use our variable:
+
+```
+@media only screen and (min-width: var(--breakpoint)) {
+```
+
+No go. A media query is not an element, it does not inherit from <html>, so it can't work.
+
 ## Flex columns
 
 Refactor the article and aside columns, this time to use flexbox. (Applies only to widescreen view.)
@@ -372,7 +383,6 @@ Remove the float property, change the column widths, remove the background image
 
 ```css
 @media only screen and (min-width: 600px) {
-    /* ... */
     .content {
         display: flex;
     }
@@ -387,7 +397,19 @@ Remove the float property, change the column widths, remove the background image
 }
 ```
 
+See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`. We are using:
+
+```
+  article {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 60%;
+  }
+```
+
 NB: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
+
+Clean up the CSS.
 
 ### Format Basic Content
 
@@ -416,18 +438,27 @@ article li, article ol {
 }
 ```
 
+Note `li > h4` : this is a `element>element` selector and is used to select elements with a specific parent.
+
+Note also: the transition property on the anchor selector. This is a shortcut for:
+
+```
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+```
+
+or `transition: color 0.2s linear;`
+
 ### Animate Links
+
+Confine this effect to anchors within the content div:
 
 ```css
 .content a:hover {
     color: var(--basil-green);
-    transition-property: color;
-    transition-duration: 1s;
-    transition-timing-function: linear;
 }
 ```
-
-or `transition: color 0.2s linear;`
 
 
 ## The Branding Header
@@ -443,9 +474,11 @@ header {
 }
 ```
 
-Add absolute positioning and create a viewable area for the image on the `<h1>`. (Note: we can get the image dimensions via the inspector.) 
+Add the custom font (top of the css file):
 
 `@import url(futura/stylesheet.css);`
+
+Note - this requires an additional call to the server to fetch the additional css when the browser renders the file.
 
 ```
 header h1 {
@@ -471,7 +504,9 @@ header h1 {
 }
 ```
 
-Use transform:
+Note - when using custom fonts like this `font-weight: normal;` is necessary because normally header tags like h1 are bold and we do not have a bold version of the font here. 
+
+We cannot see the text because we have added padding. Use transform to tweak the positioning:
 
 ```
 header h1 {
@@ -495,16 +530,9 @@ Use:
 
 `transform: translate(-100px, -80px);`
 
-An alternative:
+Note: transforms are an important property when it comes to creating animations.
 
-```css
-header h1 {
-    transform: translateY(-80px) translateX(-100px);
-    ...
-}
-```
-
-Note the beta link:
+The beta link in the header:
 
 ```html
 <header>
@@ -513,7 +541,7 @@ Note the beta link:
 </header>
 ```
 
-Absolutely position the beta element. 
+Absolutely position the beta element (we can do this in the context of the header because we apply `position: relative` to it earlier). 
 
 ```css
 header a.beta {
@@ -531,8 +559,6 @@ header a.beta {
 }
 ```
 
-Note the use of svg for the background image.
-
 Add a transform and animate:
 
 ```css
@@ -549,7 +575,11 @@ header a.beta:hover {
 }
 ```
 
+Note the use of svg for the background image. Examine the svg in Sublime text.
+
 ### Header Branding Responsive Design
+
+Examine the site for problems in a narrow browser. 
 
 Small screen:
 
@@ -602,7 +632,6 @@ nav li {
 nav p {
     margin-right: auto;
 }
-
 ```
 
 ### Button and Gradients
@@ -614,35 +643,33 @@ nav a {
     padding: 8px;
     color: #fff;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
 }
 ```
 
 ```css
 .nav-storeit a {
-    background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
-    border-radius: 6px;
+ background: linear-gradient(to bottom, #fcde41 1%, #dfa910 100%);
 }
 
 .nav-storeit a:hover {
-    background: linear-gradient(to bottom, #fcde41 1%, #dfa910 100%);
+ background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
 }
 
 .nav-pickit a {
-    background: linear-gradient(to bottom, #abc841 0%, #6b861e 100%);
-    border-radius: 6px;
+  background: linear-gradient(to bottom, #abc841 0%, #6b861e 100%);
 }
 
 .nav-pickit a:hover {
-    background: linear-gradient(to bottom, #6b861e 1%, #abc841 100%);
+  background: linear-gradient(to bottom, #6b861e 1%, #abc841 100%);
 }
 
 .nav-cookit a {
-    background: linear-gradient(to bottom, #6f89c7 0%, #344e8b 100%);
-    border-radius: 6px;
+  background: linear-gradient(to bottom, #6f89c7 0%, #344e8b 100%);
 }
 
 .nav-cookit a:hover {
-    background: linear-gradient(to bottom, #344e8b 1%, #6f89c7 100%);
+  background: linear-gradient(to bottom, #344e8b 1%, #6f89c7 100%);
 }
 ```
 
