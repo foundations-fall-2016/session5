@@ -2,13 +2,14 @@
 
 ## Homework
 
-1. Create a small screen version of the page using media queries and a new breakpoint for smaller screens (540px). Pay attention to the header in portrait mode. Try re-implementing the basil image as a branding element.
+1. Use the Toggle Device tool in Chrome dev tools to view the page on an iPhone 5. Edit the CSS to make the nav bar fit without effecting the wide screen view.
+2. Using the techniques in [Session3's ReadMe](https://github.com/front-end-foundations/session3) add a close button and overlay to the Beta info button.
 
 ## Reading
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
 
-## Node Package Manager
+## Node Package Manager Review
 
 [Node](https://nodejs.org/en/)
 
@@ -33,7 +34,7 @@ $ npm install browser-sync --save
 
 to create package.json and install [Browser Sync](https://www.browsersync.io)  into the node_modules folder. 
 
-We created two scripts"
+We created two scripts:
 
 ```
   "scripts": {
@@ -41,6 +42,8 @@ We created two scripts"
     "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
   },
 ```
+
+[Documentation](https://browsersync.io/docs) for Browser Sync commands.
 
 Which can be run from the terminal using:
 
@@ -56,16 +59,14 @@ $ npm run startUp
 
 Depending on the task.
 
-[Documentation](https://browsersync.io/docs) for Browser Sync commands.
+These script currently fail. Why?
 
 Note the --save, that created an entry in package.json.
 
 Demo `npm install` 
 
 
-## Definition List
-
-### JS Review
+## Definition List - JavaScript Review
 
 Popover div:
 
@@ -125,13 +126,35 @@ Note the second line where we use popover.querySelector instead of document.quer
 
 Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
 
-```
+<!-- ```
 function run() {
     popoverImage.setAttribute('src', this.href)
     popover.classList.toggle('showme')
     event.preventDefault();
 }
 ```
+
+### Overlay
+
+```
+<body>
+<div class="overlay"></div>
+```
+
+Create the overlay CSS:
+
+```
+.overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+``` -->
 
 Here is the entire JavaScript:
 
@@ -163,6 +186,21 @@ Note the `<abbr>` tag and the absence of a wrapper div (even though the design s
 
 
 ![Image of Basilica](FINAL.png)
+
+Normally you will start off with a few known styleguide items:
+
+```
+--basil-green: #88a308;
+--breakpoint: 600px;
+```
+
+These are applied using:
+
+```
+<property> : var(--basil-green);
+```
+
+
 
 
 ```css
@@ -204,13 +242,13 @@ Note the footer. Because both columns have been floated it can wrap.
 ```css
 footer {
     clear: both;
-    background-color: #88a308;
+    background-color: var(--basil-green);
     padding: 1rem;
     border-radius: 0 0 4px 4px;
 }
 ```
 
-### Faux columns
+### Old School Faux Columns
 
 Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
 
@@ -247,9 +285,8 @@ e.g.: Selected text:
 
 ```
 ::selection { 
-    background:#88A308; 
+    background:var(--basil-green); 
     color:#fff; 
-    text-shadow: none; 
 }
 ```
 
@@ -277,7 +314,7 @@ _Disable the float:left rule on the content._
 
 The method uses `:after` to insert a character after the div and then sets it to `display: block` and `clear: both` to prevent collapsing and then hides it.
 
-Since box collapsing is rather common designers frequently create a generic class for use elsewhere.
+Since box collapsing is rather common, designers frequently create a generic class for use elsewhere.
 
 Update the method to something shorter and more modern and apply the cf classname to the content div:
 
@@ -294,7 +331,7 @@ Update the method to something shorter and more modern and apply the cf classnam
 
 Examine the html in the inspector. Look for `::before` and `::after`. We'll return to the :before and :after pseudo-classes later.
 
-## Mobile Layout
+## Mobile Layout with Floats
 
 1. stack the article and aside on top of each other in small screen and remove the background image:
 
@@ -312,7 +349,7 @@ article, aside {
 2. add back the features necessary for two column display on wide screens:
 
 ```css
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
     }
@@ -334,7 +371,7 @@ Refactor the article and aside columns, this time to use flexbox. (Applies only 
 Remove the float property, change the column widths, remove the background image and add column effect via css:
 
 ```css
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
     /* ... */
     .content {
         display: flex;
@@ -352,11 +389,11 @@ Remove the float property, change the column widths, remove the background image
 
 NB: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
 
-### Format Content
+### Format Basic Content
 
 ```css
 h2, h3 {
-    color: #88a308;
+    color: var(--basil-green);
     margin: 8px 0;
     font-size: 1.4rem;
     letter-spacing: -1px;
@@ -383,7 +420,7 @@ article li, article ol {
 
 ```css
 .content a:hover {
-    color: #88a308;
+    color: var(--basil-green);
     transition-property: color;
     transition-duration: 1s;
     transition-timing-function: linear;
@@ -401,7 +438,7 @@ Add the green background to the branding div.
 header {
     position: relative;
     height: 120px;
-    background: #88a308;
+    background: var(--basil-green);
     border-radius: 8px 8px 0px 0px;
 }
 ```
@@ -451,6 +488,8 @@ header h1 {
 ```
 
 Note the transform in the inspector - doesn't work this way.
+
+https://www.w3schools.com/cssref/css3_pr_transform.asp
 
 Use:
 
@@ -528,7 +567,7 @@ header h1 {
 Large screen:
 
 ```css
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
     header h1 {
         padding-left: 240px;
         padding-top: 90px; 
@@ -623,13 +662,12 @@ Build the window:
     height: 100px;
     padding: 1rem;
     background: #fff;
-    border: 2px solid #EABC5A;
+    border: 2px solid #eabc5a;
     border-radius: 0.25rem;
     position: absolute;
     z-index: 2000;
     top: 100px;
     left: 50%;
-    // could also use a negative margin
 }
 
 .emphasis {
@@ -643,7 +681,7 @@ Then try this to center the box:
 
 
 
-### Another Close Method
+### Close Method
 
 Add html to the betainfo:
 
@@ -664,7 +702,7 @@ Style it:
     width: 1.5rem;
     height: 1.5rem;
     background: #fff;
-    border: 2px solid #EABC5A;
+    border: 2px solid #eabc5a;
     border-radius: 50%;
     text-align: center;
     line-height: 1.5rem;
