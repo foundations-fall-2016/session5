@@ -6,11 +6,10 @@
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
 
-## Node Package Manager
 
-[Node](https://nodejs.org/en/)
+## Terminal Basics
 
-[Node Package Manager](https://www.npmjs.com) 
+* For Windows users - [CMDR](http://cmder.net)
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
@@ -19,117 +18,64 @@ $ls -al  // flags expand the command
 $ pwd
 ```
 
-NB - Tab completion, `..` and copy paste.
+Look at tab completion, `..` and copy paste.
 
 ```
-$ cd <session5> // MacOS: copy and paste the folder you want to go to
+$ cd <definition-list>
+$ python -m SimpleHTTPServer 9001
+```
+
+Go to http://localhost:9001 in your browser
+
+Examine the Terminal to see activity.
+
+Multiple Terminal tabs. ctrl-c to stop the Python server.
+
+## Node Package Manager
+
+NPM is an essential part of the web design and development ecosystem. 
+
+Download and install [Node](https://nodejs.org/en/)
+
+It comes with NPM - [Node Package Manager](https://www.npmjs.com)
+
+```
+$ cd <session-4> // or copy and paste the folder you want to go to
 $ npm init
 $ npm install browser-sync --save
 ```
 
-to create package.json and install [Browser Sync](https://www.browsersync.io)  into the node_modules folder. 
+Note package.json and node_modules folder
 
-We created two scripts:
+[Browser Sync](https://www.browsersync.io) 
 
 ```
   "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "start": "browser-sync start --server 'app' --files 'app'"
   },
 ```
-
-[Documentation](https://browsersync.io/docs) for Browser Sync commands.
-
-Which can be run from the terminal using:
 
 ```
 $ npm run start
 ```
 
-Depending on the task.
+Review browser Sync @ 3001
 
-These script currently fail. Why?
+[Documentation](https://browsersync.io/docs)
+[Github Repo](https://github.com/BrowserSync/browser-sync)
 
-Note the --save, that created an entry in package.json.
-
-Demo `npm install` 
-
-
-## Definition List - JavaScript Review
-
-Popover div:
+Demo `npm install` on `dev` branch
 
 ```
-<div class="popover">
-    <img src="img/1-lg.jpg" />
-</div>
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'"
+  },
 ```
 
-Styles:
 
-```
-.popover {
-    position: absolute;
-    top: 30%;
-    display: none;
-}
-.showme {
-    display: block;
-}
-```
+### Non-Terminal Alteratives
 
-Select one of the links:
-
-```
-var linkedImage = document.querySelector('a')
-console.log(linkedImage)
-```
-
-Edit to select ALL of the links:
-
-```
-var linkedImages = document.querySelectorAll('a')
-console.log(linkedImages)
-```
-
-use `.forEach` to attach an event listener to each link:
-
-```
-var linkedImages = document.querySelectorAll('a')
-var imageLinks = [...linkedImages]
-imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
-
-function run() {
-event.preventDefault();
-}
-```
-
-Now we need to create a reference to the popover:
-
-```
-var popover = document.querySelector('.popover')
-var popoverImage = popover.querySelector('.popover img')
-```
-
-Note the second line where we use popover.querySelector instead of document.querySelector.
-
-Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
-
-Here is the entire JavaScript:
-
-```
-var popover = document.querySelector('.popover')
-var popoverImage = popover.querySelector('.popover img')
-
-var linkedImages = document.querySelectorAll('a')
-var imageLinks = [...linkedImages]
-imageLinks.forEach( imageLink => imageLink.addEventListener('click', run))
-
-function run() {
-    popoverImage.setAttribute('src', this.href)
-    popover.classList.toggle('showme')
-    event.preventDefault();
-}
-```
+There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used instead. A few of my favorites are Codekit (payware), Koala and Scout (both free). 
 
 
 ## Basilica
@@ -148,23 +94,16 @@ Note the `<abbr>` tag and the absence of a wrapper div (even though the design s
 Normally you will start off with a few known styleguide items:
 
 ```
---basil-green: #88a308;
---breakpoint: 600px;
+html {
+  --basil-green: #88a308;
+  --breakpoint: 640px;
+}
 ```
 
 These are applied using:
 
 ```
 <property> : var(--basil-green);
-```
-
-Responsive Images:
-
-```css
-img {
-    width: 100%;
-    height: auto;
-}
 ```
 
 Starter formatting:
@@ -188,13 +127,29 @@ article, aside {
 }
 ```
 
+Responsive Images:
+
+```css
+img {
+    width: 100%;
+    height: auto;
+}
+```
+
 Note the use of max-width on the body selector. We applied it to a div in the past.
 
 Note the use of margin on the body element. We applied it to a div in the past.
 
 Add `box-sizing: border-box;` to the article / aside rule.
 
-Move it to the universal selector  so it applies to everything.
+```css
+article, aside {
+    ...
+    box-sizing: border-box;
+}
+```
+
+Move it to the universal selector  so it applies to all the boxes.
 
 Note the footer. Because both columns have been floated it can wrap.
 
@@ -281,14 +236,20 @@ Since box collapsing is rather common, designers frequently create a generic cla
 Update the method to something shorter and more modern and apply the cf classname to the content div:
 
 ```css
-.cf:before, .cf:after {
+.cf::before, .cf::after {
     content: " ";
     display: table;
 }
 
-.cf:after {
+.cf::after {
     clear: both;
 }
+```
+
+Apply it to the content div:
+
+```html
+<div class="cf content">
 ```
 
 Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the :before and :after pseudo-classes later.
@@ -314,13 +275,10 @@ article, aside {
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
     }
-    article {
+    article, aside {
         float: left;
         width: 50%;
-    }
-    aside {
-        float: left;
-        width: 50%;
+        padding : 16px;
     }
 }
 ```
@@ -340,7 +298,7 @@ Refactor the article and aside columns, this time to use flexbox. (Applies only 
 Remove the float property, change the column widths, remove the background image and add column effect via css:
 
 ```css
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
     .content {
         display: flex;
     }
@@ -367,7 +325,7 @@ See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - w
 
 NB: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
 
-Clean up the CSS.
+Clean up the CSS by removing the clearfix (and its class in the html).
 
 ### Format Basic Content
 
@@ -383,6 +341,9 @@ a {
     color: #f90;
     text-decoration: none;
     transition: color 0.5s linear;
+}
+a:hover {
+    color: #f00;
 }
 li > h4 {
     margin-top: 12px;
@@ -438,7 +399,7 @@ Add the custom font (top of the css file):
 
 Note - this requires an additional call to the server to fetch the additional css when the browser renders the file.
 
-```
+```css
 header h1 {
     background: url(img/basil.png) no-repeat;
     font-family: FuturaStdLight, sans-serif; 
@@ -450,15 +411,11 @@ header h1 {
 
 Note: image is 272px by 170px.
 
-```
+```css
 header h1 { 
     padding-left: 260px;
     padding-top: 90px;
-    background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif; 
-    font-weight: normal;
-    color:#fff;
-    font-size: 5rem;
+    ...
 }
 ```
 
@@ -555,7 +512,7 @@ header h1 {
 Large screen:
 
 ```css
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
     header h1 {
         padding-left: 240px;
         padding-top: 90px; 
