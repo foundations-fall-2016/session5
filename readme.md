@@ -6,7 +6,7 @@
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
 
-## Node Package Manager Review
+## Node Package Manager
 
 [Node](https://nodejs.org/en/)
 
@@ -21,10 +21,8 @@ $ pwd
 
 NB - Tab completion, `..` and copy paste.
 
-Last class we ran:
-
 ```
-$ cd <session-5> // or copy and paste the folder you want to go to
+$ cd <session5> // MacOS: copy and paste the folder you want to go to
 $ npm init
 $ npm install browser-sync --save
 ```
@@ -36,7 +34,6 @@ We created two scripts:
 ```
   "scripts": {
     "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
-    "startUp": "browser-sync start --browser \"google chrome\" --server 'definition-list' --files 'definition-list'"
   },
 ```
 
@@ -46,12 +43,6 @@ Which can be run from the terminal using:
 
 ```
 $ npm run start
-```
-
-or: 
-
-```
-$ npm run startUp
 ```
 
 Depending on the task.
@@ -122,36 +113,6 @@ var popoverImage = popover.querySelector('.popover img')
 Note the second line where we use popover.querySelector instead of document.querySelector.
 
 Change the src attribute for the popoverImage _and_ toggle the showme class on the popover:
-
-<!-- ```
-function run() {
-    popoverImage.setAttribute('src', this.href)
-    popover.classList.toggle('showme')
-    event.preventDefault();
-}
-```
-
-### Overlay
-
-```
-<body>
-<div class="overlay"></div>
-```
-
-Create the overlay CSS:
-
-```
-.overlay {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-``` -->
 
 Here is the entire JavaScript:
 
