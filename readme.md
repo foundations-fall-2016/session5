@@ -2,9 +2,6 @@
 
 ## Homework
 
-1. Use the Toggle Device tool in Chrome dev tools to view the page on an iPhone 5. Edit the CSS to make the nav bar fit without effecting the wide screen view.
-2. Using the techniques in [Session3's ReadMe](https://github.com/front-end-foundations/session3) add a close button and overlay to the Beta info button.
-
 ## Reading
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
