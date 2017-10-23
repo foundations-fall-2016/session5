@@ -149,7 +149,18 @@ article, aside {
 }
 ```
 
-Move it to the universal selector  so it applies to all the boxes.
+Move it to a universal selector so it applies to all the boxes.
+
+```css
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+```
 
 Note the footer. Because both columns have been floated it can wrap.
 
