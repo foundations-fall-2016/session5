@@ -9,6 +9,7 @@
 ## Reading
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) 
+* There's a new book just out on CSS which you might consider reading - [The New CSS Layout](https://abookapart.com/products/the-new-css-layout), or at least [the excerpt](https://alistapart.com/article/the-new-css-layout-excerpt)
 
 ## Terminal Basics
 
