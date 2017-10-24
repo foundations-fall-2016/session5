@@ -84,14 +84,14 @@ There are times when setting up an NPM script seems a bit overkill. There are a 
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). 
 
-Here is an [example on the food network](http://www.foodnetwork.com/recipes/food-network-kitchens/basil-pesto-recipe2.html) page that uses the recipe schema.
+Here is an [article that addresses recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
 
 
 ![Image of Basilica](FINAL.png)
 
-Normally you will start off with a few known styleguide items:
+Normally you will start off with a few known styleguide settings. Let's use a couple of css variables:
 
 ```
 html {
@@ -100,13 +100,13 @@ html {
 }
 ```
 
-These are applied using:
+These will be applied applied in our css as follows:
 
-```
+```css
 <property> : var(--basil-green);
 ```
 
-Starter formatting:
+### Starter formatting
 
 Responsive Images:
 
