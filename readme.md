@@ -698,6 +698,10 @@ Test it by running `$npm run startSass` and adding to the scss file.
 We need to run both scripts at the same time.
 
 ```
+npm install concurrently --save-dev
+```
+
+```
   "scripts": {
     "start": "browser-sync start --browser 'google chrome' --server 'app' --files 'app'",
     "startSass": "node-sass  --watch scss/styles.scss --output app/css/",
