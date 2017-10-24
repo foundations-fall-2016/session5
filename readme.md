@@ -3,7 +3,8 @@
 ## Homework
 
 * Finalize and put your midterms on the NYU server
-* If you are able to bring in a laptop next class, download and install [Node](https://nodejs.org/en/) on it
+* If you are able to bring in a laptop next class do so
+* Download and install [Node](https://nodejs.org/en/) on it
 
 ## Reading
 
@@ -753,9 +754,10 @@ header {
 
 SASS comments:
 
-`//` - JavaScript style 
+`//` - JavaScript style. These comments do not get compiled into the css file. Traditional ones do.
 
 
+## Notes
 
 
 ```html
