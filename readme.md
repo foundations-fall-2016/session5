@@ -686,7 +686,7 @@ Add a script for processing:
 
 ```
   "scripts": {
-    "startSync": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startSync": "browser-sync start --browser 'google chrome' --server 'app' --files 'app'",
     "startSass": "node-sass  --watch scss/styles.scss --output app/css/"
   },
 ```
@@ -699,17 +699,18 @@ We need to run both scripts at the same time.
 
 ```
   "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "start": "browser-sync start --browser 'google chrome' --server 'app' --files 'app'",
     "startSass": "node-sass  --watch scss/styles.scss --output app/css/",
     "boom!": "concurrently \"npm run start\" \"npm run startSass\" "
   },
 ```
-SASS variables:
+
+#### SASS variables:
 
 $basil-green: #88a308;
 $breakpoint-med: 640px;
 
-SASS nesting (do this one step at a time):
+#### SASS nesting (do this one step at a time):
 
 ```css
 header {
@@ -752,9 +753,13 @@ header {
 }
 ```
 
-SASS comments:
+#### SASS comments:
 
 `//` - JavaScript style. These comments do not get compiled into the css file. Traditional ones do.
+
+#### SASS includes
+
+
 
 
 ## Notes
