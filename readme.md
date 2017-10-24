@@ -2,14 +2,16 @@
 
 ## Homework
 
+* Finalize and put your midterms on the NYU server
+* If you are able to bring in a laptop next class, download and install [Node](https://nodejs.org/en/) on it
+
 ## Reading
 
 * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) 
 
-
 ## Terminal Basics
 
-* For Windows users - [CMDR](http://cmder.net)
+* Note: Windows users might wish to check out [CMDER](http://cmder.net)
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
@@ -18,36 +20,28 @@ $ls -al  // flags expand the command
 $ pwd
 ```
 
-Look at tab completion, `..` and copy paste.
-
-```
-$ cd <definition-list>
-$ python -m SimpleHTTPServer 9001
-```
-
-Go to http://localhost:9001 in your browser
-
-Examine the Terminal to see activity.
-
-Multiple Terminal tabs. ctrl-c to stop the Python server.
+Note: tab completion, `..` and copy paste.
 
 ## Node Package Manager
 
-NPM is an essential part of the web design and development ecosystem. 
+[Node Package Manager](https://www.npmjs.com) is an essential part of the web design and development ecosystem. 
 
-Download and install [Node](https://nodejs.org/en/)
+[Node](https://nodejs.org/en/) includes NPM as part of its install
 
-It comes with NPM - [Node Package Manager](https://www.npmjs.com)
+Demo with [Browser Sync](https://www.browsersync.io) 
 
 ```
-$ cd <session-4> // or copy and paste the folder you want to go to
 $ npm init
 $ npm install browser-sync --save
 ```
 
-Note package.json and node_modules folder
+Notes
+* package.json 
+* dependancies
+* node_modules folder
+* discuss the need for `.gitignore`.
 
-[Browser Sync](https://www.browsersync.io) 
+Browser Sync [CLI documentation](https://www.browsersync.io/docs/command-line)
 
 ```
   "scripts": {
@@ -59,12 +53,17 @@ Note package.json and node_modules folder
 $ npm run start
 ```
 
-Review browser Sync @ 3001
+Review Browser Sync's interface at port 3001.
 
-[Documentation](https://browsersync.io/docs)
 [Github Repo](https://github.com/BrowserSync/browser-sync)
 
-Demo `npm install` on `dev` branch
+Today's repo comes with a package.json file (aka 'manifest'). 
+
+Run `npm install`:
+
+```
+npm install
+```
 
 ```
   "scripts": {
@@ -75,7 +74,7 @@ Demo `npm install` on `dev` branch
 
 ### Non-Terminal Alteratives
 
-There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used instead. A few of my favorites are Codekit (payware), Koala and Scout (both free). 
+There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS. 
 
 
 ## Basilica
@@ -108,6 +107,15 @@ These are applied using:
 
 Starter formatting:
 
+Responsive Images:
+
+```css
+img {
+    width: 100%;
+    height: auto;
+}
+```
+
 ```css
 * { 
     margin:0; 
@@ -120,25 +128,21 @@ body {
    margin: 0 auto;
    margin-top: 24px;
 } 
+```
+
+Note the use of max-width on the body selector. We applied it to a div in the past.
+
+Note the use of margin on the body element. We applied it to a div in the past.
+
+We'll start by using float on the two main content columns:
+
+```css
 article, aside {
     float: left;
     width : 50%;
     padding : 16px;
 }
 ```
-
-Responsive Images:
-
-```css
-img {
-    width: 100%;
-    height: auto;
-}
-```
-
-Note the use of max-width on the body selector. We applied it to a div in the past.
-
-Note the use of margin on the body element. We applied it to a div in the past.
 
 Add `box-sizing: border-box;` to the article / aside rule.
 
@@ -149,7 +153,16 @@ article, aside {
 }
 ```
 
-Move it to the universal selector  so it applies to all the boxes.
+Move it to a universal selector so it applies to all the boxes. See [Paul Irish](https://www.paulirish.com/2012/box-sizing-border-box-ftw/) on box-sizing.
+
+```css
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
 
 Note the footer. Because both columns have been floated it can wrap.
 
@@ -164,7 +177,7 @@ footer {
 
 ### Old School Faux Columns
 
-Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use a very old technique for the moment and change it later.
+Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use an old technique for the moment and change it later.
 
 Examine the background image.
 
@@ -283,13 +296,13 @@ article, aside {
 }
 ```
 
-Try to use our variable:
+Note: If we try to use our variable:
 
 ```
 @media only screen and (min-width: var(--breakpoint)) {
 ```
 
-No go. A media query is not an element, it does not inherit from <html>, so it can't work.
+It doesn't work. A media query is not an element, it does not inherit from <html>.
 
 ## Flex columns
 
@@ -313,7 +326,9 @@ Remove the float property, change the column widths, remove the background image
 }
 ```
 
-See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`. We are using:
+See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`. 
+
+We are using:
 
 ```
   article {
@@ -323,7 +338,7 @@ See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - w
   }
 ```
 
-NB: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
+Note: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
 
 Clean up the CSS by removing the clearfix (and its class in the html).
 
@@ -371,7 +386,7 @@ or `transition: color 0.2s linear;`
 
 ### Animate Links
 
-Confine this effect to anchors within the content div:
+Confine this effect to anchors within the content div. Replace the generic hover with:
 
 ```css
 .content a:hover {
@@ -423,10 +438,10 @@ Note - when using custom fonts like this `font-weight: normal;` is necessary bec
 
 We cannot see the text because we have added padding. Use transform to tweak the positioning:
 
-```
+```css
 header h1 {
     transform: translateX(-100px);
-    transform: translateY(-100px);
+    transform: translateY(-80px);
     padding-left: 260px;
     padding-top: 90px;
     background: url(img/basil.png) no-repeat;
@@ -439,15 +454,13 @@ header h1 {
 
 Note the transform in the inspector - doesn't work this way.
 
-https://www.w3schools.com/cssref/css3_pr_transform.asp
-
 Use:
 
 `transform: translate(-100px, -80px);`
 
-Note: transforms are an important property when it comes to creating animations.
+Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations.
 
-The beta link in the header:
+Note the beta link in the header:
 
 ```html
 <header>
@@ -496,7 +509,7 @@ Note the use of svg for the background image. Examine the svg in Sublime text.
 
 Examine the site for problems in a narrow browser. 
 
-Small screen:
+Since we are attempting a mobile first design let's edit for small screen:
 
 ```css
 header h1 {
@@ -509,7 +522,7 @@ header h1 {
 }
 ```
 
-Large screen:
+And re-add features for the large screen:
 
 ```css
 @media only screen and (min-width: 640px) {
@@ -521,6 +534,8 @@ Large screen:
     }
 }
 ```
+
+Note: there is no hover in touch screen devices.
 
 ### Navigation Flexbox
 
@@ -588,6 +603,10 @@ nav a {
 }
 ```
 
+### SASS Setup Using NPM
+
+
+
 ## JavaScript Beta Window
 
 Build the window:
@@ -654,16 +673,97 @@ Style it:
 ```
 
 
-## NOTES
+## SASS
 
-https://github.com/sass/node-sass#command-line-interface
+Create a `scss` directory at the top level of the project and save styles.css into it using the .scss suffix.
+
+Note: syntax highlighting in editor.
+
+Install node-sass via NPM as a developmental dependency.
+
+Add a script for processing:
+
+```
+  "scripts": {
+    "startSync": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startSass": "node-sass  --watch scss/styles.scss --output app/css/"
+  },
+```
+
+Node-sass CLI [documentation](https://github.com/sass/node-sass#command-line-interface)
+
+Test it by running `$npm run startSass` and adding to the scss file.
+
+We need to run both scripts at the same time.
+
+```
+  "scripts": {
+    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startSass": "node-sass  --watch scss/styles.scss --output app/css/",
+    "boom!": "concurrently \"npm run start\" \"npm run startSass\" "
+  },
+```
+SASS variables:
+
+$basil-green: #88a308;
+$breakpoint-med: 640px;
+
+SASS nesting (do this one step at a time):
+
+```css
+header {
+    position: relative;
+    height: 120px;
+    background: $basil-green;
+    border-radius: 8px 8px 0px 0px;
+    h1 {
+        background: url(img/basil.png) no-repeat;
+        font-family: FuturaStdLight, sans-serif;
+        font-weight: normal;
+        color: #fff;
+        font-size: 5rem;
+        background-position: -20px -20px;
+        @media (min-width: $breakpoint-med) {
+            padding-left: 240px;
+            padding-top: 90px; 
+            transform: translate(-100px, -80px); 
+            background-position: top left;
+        }
+    }
+    a.beta {
+        background: url('img/burst.svg') no-repeat;
+        color: #fff;
+        font-size: 1.5rem;
+        position: absolute;
+        top: -20px;
+        right: 10px;
+        width: 85px;
+        height: 85px;
+        line-height: 85px;
+        text-align: center;
+        text-transform: uppercase;
+        transform: rotate(20deg);
+        transition: all 1s ease;
+        &:hover {
+            transform: rotate(0deg) scale(1.2);
+        }
+    }
+}
+```
+
+SASS comments:
+
+`//` - JavaScript style 
+
+
+
 
 ```html
 <style>
 .content{
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
+  /*grid-template-rows: 20% 20% 20% 20% 20%;*/
 }
 article {
     grid-row-start: 1;
