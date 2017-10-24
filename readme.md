@@ -4,7 +4,7 @@
 
 ## Reading
 
-* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) - finish reading
+* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) 
 
 
 ## Terminal Basics
@@ -149,18 +149,7 @@ article, aside {
 }
 ```
 
-Move it to a universal selector so it applies to all the boxes.
-
-```css
-html {
-    box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-```
+Move it to the universal selector  so it applies to all the boxes.
 
 Note the footer. Because both columns have been floated it can wrap.
 
@@ -666,6 +655,60 @@ Style it:
 
 
 ## NOTES
+
+https://github.com/sass/node-sass#command-line-interface
+
+```html
+<style>
+.content{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+}
+article {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+}
+aside {
+    grid-row-start: 1;
+    grid-column-start: 4;
+    grid-column-end: span 2;
+}
+
+</style>
+```
+
+```js
+{
+  "name": "session5",
+  "version": "1.0.0",
+  "description": "## Homework",
+  "main": "index.js",
+  "scripts": {
+    "startSync": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
+    "startSass": "node-sass  --watch scss/styles.scss --output app/css/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/front-end-foundations/session5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/front-end-foundations/session5/issues"
+  },
+  "homepage": "https://github.com/front-end-foundations/session5#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.8"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3"
+  }
+}
+
+```
+
 
 ```
     <filter id="f1" x="0" y="0">
