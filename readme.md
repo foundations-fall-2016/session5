@@ -605,76 +605,6 @@ nav a {
 }
 ```
 
-### SASS Setup Using NPM
-
-
-
-## JavaScript Beta Window
-
-Build the window:
-
-```html
-<div class="betainfo">
-    <p>Information about the beta program.<p>
-</div>
-```
-
-```css
-.betainfo {
-    width: 200px;
-    height: 100px;
-    padding: 1rem;
-    background: #fff;
-    border: 2px solid #eabc5a;
-    border-radius: 0.25rem;
-    position: absolute;
-    z-index: 2000;
-    top: 100px;
-    left: 50%;
-    // could also use a negative margin
-}
-
-.emphasis {
-    color: red;
-}
-```
-
-Then try this to center the box:
-
-`left:calc(50% - 100px);`
-
-
-
-### Another Close Method
-
-Add html to the betainfo:
-
-```html
-<div class="betainfo">
-    <p>Information about the beta program.<p>
-    <a class="closer" href="#0">X</a>
-</div>
-```
-
-Style it:
-
-```css
-.closer {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: #fff;
-    border: 2px solid #eabc5a;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 1.5rem;
-    font-weight: bold;
-}
-```
-
-
 ## SASS
 
 Create a `scss` directory at the top level of the project and save styles.css into it using the .scss suffix.
@@ -766,6 +696,76 @@ header {
 
 `@import "imports/variables";`
 
+## JavaScript Beta Window
+
+Build the window:
+
+```html
+<div class="betainfo">
+    <p>Information about the beta program.<p>
+</div>
+```
+
+```css
+.betainfo {
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    background: #fff;
+    border: 2px solid #eabc5a;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 2000;
+    top: 100px;
+    left: 50%;
+    // could also use a negative margin
+}
+
+.emphasis {
+    color: red;
+}
+```
+
+Then try this to center the box:
+
+`left:calc(50% - 100px);`
+
+
+
+### Another Close Method
+
+Add html to the betainfo:
+
+```html
+<div class="betainfo">
+    <p>Information about the beta program.<p>
+    <a class="closer" href="#0">X</a>
+</div>
+```
+
+Style it:
+
+```css
+.closer {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #fff;
+    border: 2px solid #eabc5a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.5rem;
+    font-weight: bold;
+}
+```
+
+
+
+
+
+
 
 
 ## Notes
@@ -788,7 +788,6 @@ aside {
     grid-column-start: 4;
     grid-column-end: span 2;
 }
-
 </style>
 ```
 
