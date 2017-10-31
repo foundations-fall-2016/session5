@@ -8,7 +8,7 @@
 
 ## Reading
 
-* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) 
+* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers)
 * There's a new book just out on CSS which you might consider reading - [The New CSS Layout](https://abookapart.com/products/the-new-css-layout), or at least [the excerpt](https://alistapart.com/article/the-new-css-layout-excerpt)
 
 ## Terminal Basics
@@ -17,7 +17,7 @@
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
-$ ls 
+$ ls
 $ls -al  // flags expand the command
 $ pwd
 ```
@@ -26,11 +26,11 @@ Note: tab completion, `..` and copy paste.
 
 ## Node Package Manager
 
-[Node Package Manager](https://www.npmjs.com) is an essential part of the web design and development ecosystem. 
+[Node Package Manager](https://www.npmjs.com) is an essential part of the web design and development ecosystem.
 
 [Node](https://nodejs.org/en/) includes NPM as part of its install
 
-Demo with [Browser Sync](https://www.browsersync.io) 
+Demo with [Browser Sync](https://www.browsersync.io)
 
 ```
 $ npm init
@@ -38,7 +38,7 @@ $ npm install browser-sync --save
 ```
 
 Notes
-* package.json 
+* package.json
 * dependancies
 * node_modules folder
 * discuss the need for `.gitignore`.
@@ -59,7 +59,7 @@ Review Browser Sync's interface at port 3001.
 
 [Github Repo](https://github.com/BrowserSync/browser-sync)
 
-Today's repo comes with a package.json file (aka 'manifest'). 
+Today's repo comes with a package.json file (aka 'manifest').
 
 Run `npm install`:
 
@@ -76,14 +76,14 @@ npm install
 
 ### Non-Terminal Alteratives
 
-There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS. 
+There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS.
 
 
 ## Basilica
 
 `$ npm run start`
 
-Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html). 
+Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
 Here is an [article that addresses recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
 
@@ -119,17 +119,17 @@ img {
 ```
 
 ```css
-* { 
-    margin:0; 
-    padding:0; 
+* {
+    margin:0;
+    padding:0;
 }
-body { 
-   font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif; 
+body {
+   font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
    color : #333;
    max-width: 840px;
    margin: 0 auto;
    margin-top: 24px;
-} 
+}
 ```
 
 Note the use of max-width on the body selector. We applied it to a div in the past.
@@ -184,7 +184,7 @@ Since the two columns can be of different heights and our design calls for two c
 Examine the background image.
 
 ```css
-.content { 
+.content {
   background : url(img/html.png) repeat-y 50% 50%;
 }
 ```
@@ -192,13 +192,13 @@ Examine the background image.
 Note that we cannot see the background image. The content div has collapsed because its direct children have been floated. We have looked at a number of methods that can be used to prevent collapsing. E.g.:
 
 ```css
-.content { 
+.content {
   background : url(img/html.png) repeat-y 50% 50%;
   float: left;
 }
 ```
 
-Here we will use the clear fix method. 
+Here we will use the clear fix method.
 
 ### ::Pseudo-elements vs :Pseudo-classes
 
@@ -216,9 +216,9 @@ Some [ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-el
 e.g.: Selected text:
 
 ```
-::selection { 
-    background:var(--basil-green); 
-    color:#fff; 
+::selection {
+    background:var(--basil-green);
+    color:#fff;
 }
 ```
 
@@ -227,20 +227,20 @@ e.g.: Selected text:
 _Disable the float:left rule on the content before applying these._
 
 ```
-.content:after { 
-    content:"boo"; 
-    display:block; 
-    clear:both; 
+.content:after {
+    content:"boo";
+    display:block;
+    clear:both;
 }
 ```
 
 ```
-.content:after { 
-    content:"."; 
-    display:block; 
-    height:0; 
-    clear:both; 
-    visibility:hidden; 
+.content:after {
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
 }
 ```
 
@@ -274,7 +274,7 @@ Examine the html in the inspector. Look for `::before` and `::after` after the c
 1. stack the article and aside on top of each other in small screen and remove the background image:
 
 ```css
-.content { 
+.content {
   /*background : url(img/html.png) repeat-y 50% 50%;*/
 }
 
@@ -324,11 +324,11 @@ Remove the float property, change the column widths, remove the background image
         background: #F5FAEF;
         box-shadow: -4px 0px 4px #ddd;
     }
-    
+
 }
 ```
 
-See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`. 
+See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`.
 
 We are using:
 
@@ -419,7 +419,7 @@ Note - this requires an additional call to the server to fetch the additional cs
 ```css
 header h1 {
     background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif; 
+    font-family: FuturaStdLight, sans-serif;
     font-weight: normal;
     color:#fff;
     font-size: 5rem;
@@ -429,14 +429,14 @@ header h1 {
 Note: image is 272px by 170px.
 
 ```css
-header h1 { 
+header h1 {
     padding-left: 260px;
     padding-top: 90px;
     ...
 }
 ```
 
-Note - when using custom fonts like this `font-weight: normal;` is necessary because normally header tags like h1 are bold and we do not have a bold version of the font here. 
+Note - when using custom fonts like this `font-weight: normal;` is necessary because normally header tags like h1 are bold and we do not have a bold version of the font here.
 
 We cannot see the text because we have added padding. Use transform to tweak the positioning:
 
@@ -447,7 +447,7 @@ header h1 {
     padding-left: 260px;
     padding-top: 90px;
     background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif; 
+    font-family: FuturaStdLight, sans-serif;
     font-weight: normal;
     color:#fff;
     font-size: 5rem;
@@ -471,7 +471,7 @@ Note the beta link in the header:
 </header>
 ```
 
-Absolutely position the beta element (we can do this in the context of the header because we apply `position: relative` to it earlier). 
+Absolutely position the beta element (we can do this in the context of the header because we apply `position: relative` to it earlier).
 
 ```css
 header a.beta {
@@ -509,7 +509,7 @@ Note the use of svg for the background image. Examine the svg in Sublime text.
 
 ### Header Branding Responsive Design
 
-Examine the site for problems in a narrow browser. 
+Examine the site for problems in a narrow browser.
 
 Since we are attempting a mobile first design let's edit for small screen:
 
@@ -530,8 +530,8 @@ And re-add features for the large screen:
 @media only screen and (min-width: 640px) {
     header h1 {
         padding-left: 240px;
-        padding-top: 90px; 
-        transform: translate(-100px, -80px); 
+        padding-top: 90px;
+        transform: translate(-100px, -80px);
         background-position: top left;
     }
 }
@@ -605,167 +605,6 @@ nav a {
 }
 ```
 
-## SASS
-
-Create a `scss` directory at the top level of the project and save styles.css into it using the .scss suffix.
-
-Note: syntax highlighting in editor.
-
-Install node-sass via NPM as a developmental dependency.
-
-Add a script for processing:
-
-```
-  "scripts": {
-    "startSync": "browser-sync start --browser 'google chrome' --server 'app' --files 'app'",
-    "startSass": "node-sass  --watch scss/styles.scss --output app/css/"
-  },
-```
-
-Node-sass CLI [documentation](https://github.com/sass/node-sass#command-line-interface)
-
-Test it by running `$npm run startSass` and adding to the scss file.
-
-We need to run both scripts at the same time.
-
-```
-npm install concurrently --save-dev
-```
-
-```
-  "scripts": {
-    "start": "browser-sync start --browser 'google chrome' --server 'app' --files 'app'",
-    "startSass": "node-sass  --watch scss/styles.scss --output app/css/",
-    "boom!": "concurrently \"npm run start\" \"npm run startSass\" "
-  },
-```
-
-#### SASS variables:
-
-$basil-green: #88a308;
-$breakpoint-med: 640px;
-
-#### SASS nesting (do this one step at a time):
-
-```css
-header {
-    position: relative;
-    height: 120px;
-    background: $basil-green;
-    border-radius: 8px 8px 0px 0px;
-    h1 {
-        background: url(img/basil.png) no-repeat;
-        font-family: FuturaStdLight, sans-serif;
-        font-weight: normal;
-        color: #fff;
-        font-size: 5rem;
-        background-position: -20px -20px;
-        @media (min-width: $breakpoint-med) {
-            padding-left: 240px;
-            padding-top: 90px; 
-            transform: translate(-100px, -80px); 
-            background-position: top left;
-        }
-    }
-    a.beta {
-        background: url('img/burst.svg') no-repeat;
-        color: #fff;
-        font-size: 1.5rem;
-        position: absolute;
-        top: -20px;
-        right: 10px;
-        width: 85px;
-        height: 85px;
-        line-height: 85px;
-        text-align: center;
-        text-transform: uppercase;
-        transform: rotate(20deg);
-        transition: all 1s ease;
-        &:hover {
-            transform: rotate(0deg) scale(1.2);
-        }
-    }
-}
-```
-
-#### SASS comments:
-
-`//` - JavaScript style. These comments do not get compiled into the css file. Traditional ones do.
-
-#### SASS includes
-
-`@import "imports/variables";`
-
-## JavaScript Beta Window
-
-Build the window:
-
-```html
-<div class="betainfo">
-    <p>Information about the beta program.<p>
-</div>
-```
-
-```css
-.betainfo {
-    width: 200px;
-    height: 100px;
-    padding: 1rem;
-    background: #fff;
-    border: 2px solid #eabc5a;
-    border-radius: 0.25rem;
-    position: absolute;
-    z-index: 2000;
-    top: 100px;
-    left: 50%;
-    // could also use a negative margin
-}
-
-.emphasis {
-    color: red;
-}
-```
-
-Then try this to center the box:
-
-`left:calc(50% - 100px);`
-
-
-
-### Another Close Method
-
-Add html to the betainfo:
-
-```html
-<div class="betainfo">
-    <p>Information about the beta program.<p>
-    <a class="closer" href="#0">X</a>
-</div>
-```
-
-Style it:
-
-```css
-.closer {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: #fff;
-    border: 2px solid #eabc5a;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 1.5rem;
-    font-weight: bold;
-}
-```
-
-
-
-
-
-
 
 
 ## Notes
@@ -790,100 +629,3 @@ aside {
 }
 </style>
 ```
-
-```js
-{
-  "name": "session5",
-  "version": "1.0.0",
-  "description": "## Homework",
-  "main": "index.js",
-  "scripts": {
-    "startSync": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'",
-    "startSass": "node-sass  --watch scss/styles.scss --output app/css/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/front-end-foundations/session5.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/front-end-foundations/session5/issues"
-  },
-  "homepage": "https://github.com/front-end-foundations/session5#readme",
-  "dependencies": {
-    "browser-sync": "^2.18.8"
-  },
-  "devDependencies": {
-    "node-sass": "^4.5.3"
-  }
-}
-
-```
-
-
-```
-    <filter id="f1" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
-    </filter>
-```
-
-and
-
-```
-...85" filter="url(#f1)"/>
-```
-
-equals
-
-```
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-    <defs>
-    <style>.cls-1{fill:#f38f40;}</style>
-    <filter id="f1" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
-    </filter>
-    </defs>
-    <title>Artboard 1-toc</title>
-    <polygon class="cls-1" points="32.05 19.85 33.89 18 32.05 16.15 33.35 13.89 31.09 12.58 31.64 10.05 29 9.38 29 7 26.62 7 25.95 4.36 23.42 4.97 22.11 2.68 19.85 3.97 18 2.11 16.15 3.96 13.89 2.65 12.58 4.91 10.05 4.36 9.38 7 7 7 7 9.38 4.36 10.05 4.97 12.58 2.68 13.89 3.97 16.15 2.11 18 3.96 19.85 2.65 22.11 4.91 23.42 4.36 25.95 7 26.62 7 29 9.38 29 10.05 31.64 12.58 31.03 13.89 33.32 16.15 32.03 18 33.89 19.85 32.04 22.11 33.35 23.42 31.09 25.95 31.64 26.62 29 29 29 29 26.62 31.64 25.95 31.03 23.42 33.32 22.11 32.05 19.85" filter="url(#f1)"/></svg>
-```
-
-add blur on alpha channel
-
-```
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-    <defs>
-        <style>.cls-1{fill:#f38f40;}</style>
-        <filter id="f1" x="0" y="0">
-            <feOffset result = "offOut" in = "SourceAlpha"  dx="1" dy="1" />
-            <feGaussianBlur result = "blurOut" in = "offOut" stdDeviation="1" />
-            <feBlend in = "SourceGraphic" in2 = "blurOut" mode = "normal"/>
-        </filter>
-    </defs>
-    <title>Artboard 1-toc</title>
-    <polygon class="cls-1" points="32.05 19.85 33.89 18 32.05 16.15 33.35 13.89 31.09 12.58 31.64 10.05 29 9.38 29 7 26.62 7 25.95 4.36 23.42 4.97 22.11 2.68 19.85 3.97 18 2.11 16.15 3.96 13.89 2.65 12.58 4.91 10.05 4.36 9.38 7 7 7 7 9.38 4.36 10.05 4.97 12.58 2.68 13.89 3.97 16.15 2.11 18 3.96 19.85 2.65 22.11 4.91 23.42 4.36 25.95 7 26.62 7 29 9.38 29 10.05 31.64 12.58 31.03 13.89 33.32 16.15 32.03 18 33.89 19.85 32.04 22.11 33.35 23.42 31.09 25.95 31.64 26.62 29 29 29 29 26.62 31.64 25.95 31.03 23.42 33.32 22.11 32.05 19.85" filter="url(#f1)"/></svg>
-```
-
-Tap Highlight Color
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
