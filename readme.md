@@ -2,18 +2,17 @@
 
 ## Homework
 
-* Finalize and put your midterms on the NYU server
-* If you are able to bring in a laptop next class do so
-* Download and install [Node](https://nodejs.org/en/) on it
+* Continue with your midterms
 
 ## Reading
 
-* [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers)
-* There's a new book just out on CSS which you might consider reading - [The New CSS Layout](https://abookapart.com/products/the-new-css-layout), or at least [the excerpt](https://alistapart.com/article/the-new-css-layout-excerpt)
+<!-- * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) -->
+
+* There's a new book just out on CSS which you might consider reading - [The New CSS Layout](https://abookapart.com/products/the-new-css-layout), read [the excerpt](https://alistapart.com/article/the-new-css-layout-excerpt)
 
 ## Terminal Basics
 
-* Note: Windows users might wish to check out [CMDER](http://cmder.net)
+* Note: Windows users might wish to check out [CMDER](http://cmder.net) or use the terminal installed by Git.
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
@@ -32,14 +31,15 @@ Note: tab completion, `..` and copy paste.
 
 Demo with [Browser Sync](https://www.browsersync.io)
 
-```
+```bash
 $ npm init
 $ npm install browser-sync --save
 ```
 
 Notes
+
 * package.json
-* dependancies
+* dependencies
 * node_modules folder
 * discuss the need for `.gitignore`.
 
@@ -73,11 +73,9 @@ npm install
   },
 ```
 
-
 ### Non-Terminal Alteratives
 
 There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS.
-
 
 ## Basilica
 
@@ -88,7 +86,6 @@ Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [
 Here is an [article that addresses recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
-
 
 ![Image of Basilica](FINAL.png)
 
@@ -104,7 +101,7 @@ html {
 These will be applied applied in our css as follows:
 
 ```css
-<property> : var(--basil-green);
+<property>: var(--basil-green);
 ```
 
 ### Starter formatting
@@ -120,15 +117,15 @@ img {
 
 ```css
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 body {
-   font: 100%/1.5 "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
-   color : #333;
-   max-width: 840px;
-   margin: 0 auto;
-   margin-top: 24px;
+    font: 100%/1.5 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    color: #333;
+    max-width: 840px;
+    margin: 0 auto;
+    margin-top: 24px;
 }
 ```
 
@@ -139,17 +136,19 @@ Note the use of margin on the body element. We applied it to a div in the past.
 We'll start by using float on the two main content columns:
 
 ```css
-article, aside {
+article,
+aside {
     float: left;
-    width : 50%;
-    padding : 16px;
+    width: 50%;
+    padding: 16px;
 }
 ```
 
 Add `box-sizing: border-box;` to the article / aside rule.
 
 ```css
-article, aside {
+article,
+aside {
     ...
     box-sizing: border-box;
 }
@@ -159,10 +158,12 @@ Move it to a universal selector so it applies to all the boxes. See [Paul Irish]
 
 ```css
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 ```
 
@@ -185,7 +186,7 @@ Examine the background image.
 
 ```css
 .content {
-  background : url(img/html.png) repeat-y 50% 50%;
+    background: url(img/html.png) repeat-y 50% 50%;
 }
 ```
 
@@ -193,8 +194,8 @@ Note that we cannot see the background image. The content div has collapsed beca
 
 ```css
 .content {
-  background : url(img/html.png) repeat-y 50% 50%;
-  float: left;
+    background: url(img/html.png) repeat-y 50% 50%;
+    float: left;
 }
 ```
 
@@ -251,8 +252,9 @@ Since box collapsing is rather common, designers frequently create a generic cla
 Update the method to something shorter and more modern and apply the cf classname to the content div:
 
 ```css
-.cf::before, .cf::after {
-    content: " ";
+.cf::before,
+.cf::after {
+    content: ' ';
     display: table;
 }
 
@@ -275,10 +277,11 @@ Examine the html in the inspector. Look for `::before` and `::after` after the c
 
 ```css
 .content {
-  /*background : url(img/html.png) repeat-y 50% 50%;*/
+    /*background : url(img/html.png) repeat-y 50% 50%;*/
 }
 
-article, aside {
+article,
+aside {
     padding: 1rem;
 }
 ```
@@ -290,10 +293,11 @@ article, aside {
     .content {
         background: url('img/html.png') repeat-y 50% 50%;
     }
-    article, aside {
+    article,
+    aside {
         float: left;
         width: 50%;
-        padding : 16px;
+        padding: 16px;
     }
 }
 ```
@@ -321,10 +325,9 @@ Remove the float property, change the column widths, remove the background image
         flex: 1 0 60%;
     }
     aside {
-        background: #F5FAEF;
+        background: #f5faef;
         box-shadow: -4px 0px 4px #ddd;
     }
-
 }
 ```
 
@@ -347,7 +350,8 @@ Clean up the CSS by removing the clearfix (and its class in the html).
 ### Format Basic Content
 
 ```css
-h2, h3 {
+h2,
+h3 {
     color: var(--basil-green);
     margin: 8px 0;
     font-size: 1.4rem;
@@ -368,7 +372,8 @@ li > h4 {
 aside li {
     list-style: none;
 }
-article li, article ol {
+article li,
+article ol {
     margin-left: 1rem;
     margin-bottom: 0.5rem;
 }
@@ -396,7 +401,6 @@ Confine this effect to anchors within the content div. Replace the generic hover
 }
 ```
 
-
 ## The Branding Header
 
 Add the green background to the branding div.
@@ -421,7 +425,7 @@ header h1 {
     background: url(img/basil.png) no-repeat;
     font-family: FuturaStdLight, sans-serif;
     font-weight: normal;
-    color:#fff;
+    color: #fff;
     font-size: 5rem;
 }
 ```
@@ -432,7 +436,7 @@ Note: image is 272px by 170px.
 header h1 {
     padding-left: 260px;
     padding-top: 90px;
-    ...
+    ...;
 }
 ```
 
@@ -449,7 +453,7 @@ header h1 {
     background: url(img/basil.png) no-repeat;
     font-family: FuturaStdLight, sans-serif;
     font-weight: normal;
-    color:#fff;
+    color: #fff;
     font-size: 5rem;
 }
 ```
@@ -581,34 +585,31 @@ nav a {
 
 ```css
 .nav-storeit a {
- background: linear-gradient(to bottom, #fcde41 1%, #dfa910 100%);
+    background: linear-gradient(to bottom, #fcde41 1%, #dfa910 100%);
 }
 
 .nav-storeit a:hover {
- background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
+    background: linear-gradient(to bottom, #dfa910 0%, #fcde41 100%);
 }
 
 .nav-pickit a {
-  background: linear-gradient(to bottom, #abc841 0%, #6b861e 100%);
+    background: linear-gradient(to bottom, #abc841 0%, #6b861e 100%);
 }
 
 .nav-pickit a:hover {
-  background: linear-gradient(to bottom, #6b861e 1%, #abc841 100%);
+    background: linear-gradient(to bottom, #6b861e 1%, #abc841 100%);
 }
 
 .nav-cookit a {
-  background: linear-gradient(to bottom, #6f89c7 0%, #344e8b 100%);
+    background: linear-gradient(to bottom, #6f89c7 0%, #344e8b 100%);
 }
 
 .nav-cookit a:hover {
-  background: linear-gradient(to bottom, #344e8b 1%, #6f89c7 100%);
+    background: linear-gradient(to bottom, #344e8b 1%, #6f89c7 100%);
 }
 ```
 
-
-
 ## Notes
-
 
 ```html
 <style>
