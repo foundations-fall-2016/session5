@@ -67,11 +67,14 @@ Run `npm install`:
 npm install
 ```
 
-```
+```js
   "scripts": {
-    "start": "browser-sync start --browser \"google chrome\" --server 'app' --files 'app'"
+    "startmac": "browser-sync start --directory --server 'app' --files 'app'",
+    "startpc": "browser-sync start --directory --server \"app\" --files \"app\""
   },
 ```
+
+Note - the startpc script will work on Macs.
 
 ### Non-Terminal Alteratives
 
@@ -91,10 +94,10 @@ Note the `<abbr>` tag and the absence of a wrapper div (even though the design s
 
 Normally you will start off with a few known styleguide settings. Let's use a couple of css variables:
 
-```
+```css
 html {
-  --basil-green: #88a308;
-  --breakpoint: 640px;
+    --basil-green: #88a308;
+    --breakpoint: 640px;
 }
 ```
 
@@ -129,9 +132,14 @@ body {
 }
 ```
 
-Note the use of max-width on the body selector. We applied it to a div in the past.
+See this [font stack](https://www.cssfontstack.com/Lucida-Grande) for improvements.
 
-Note the use of margin on the body element. We applied it to a div in the past.
+Note the use of:
+
+1. max-width on the body selector
+1. margin on the body element
+
+We applied these to a div in the past.
 
 We'll start by using float on the two main content columns:
 
@@ -199,7 +207,7 @@ Note that we cannot see the background image. The content div has collapsed beca
 }
 ```
 
-Here we will use the clear fix method.
+Here we will use the clearfix method.
 
 ### ::Pseudo-elements vs :Pseudo-classes
 
@@ -216,32 +224,34 @@ Some [ideas](https://css-tricks.com/pseudo-element-roundup/) for using pseudo-el
 
 e.g.: Selected text:
 
-```
+```css
 ::selection {
-    background:var(--basil-green);
-    color:#fff;
+    background: var(--basil-green);
+    color: #fff;
 }
 ```
 
 ### Clearfix
 
+Clearfix is an important method often used in conjunction with float based layouts to control collapsing.
+
 _Disable the float:left rule on the content before applying these._
 
-```
+```css
 .content:after {
-    content:"boo";
-    display:block;
-    clear:both;
+    content: 'boo';
+    display: block;
+    clear: both;
 }
 ```
 
-```
+```css
 .content:after {
-    content:".";
-    display:block;
-    height:0;
-    clear:both;
-    visibility:hidden;
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 ```
 
@@ -271,7 +281,7 @@ Apply it to the content div:
 
 Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the :before and :after pseudo-classes later.
 
-## Mobile Layout with Floats
+## Mobile First Layout with Floats
 
 1. stack the article and aside on top of each other in small screen and remove the background image:
 
@@ -302,13 +312,16 @@ aside {
 }
 ```
 
-Note: If we try to use our variable:
+Note that, unlike previous responsive examples in this class, we are _adding_ styles to the wide screen view using `min-width`. In previous examples we were adding styles to the small screen using `max-width`.
 
-```
+Aside: If we try to use our variable:
+
+```css
 @media only screen and (min-width: var(--breakpoint)) {
+}
 ```
 
-It doesn't work. A media query is not an element, it does not inherit from <html>.
+It doesn't work. A media query is not an elemtent selector, it does not inherit styles.
 
 ## Flex columns
 
@@ -333,14 +346,14 @@ Remove the float property, change the column widths, remove the background image
 
 See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`.
 
-We are using:
+Here is the long form:
 
-```
-  article {
+```css
+article {
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 60%;
-  }
+}
 ```
 
 Note: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
@@ -379,14 +392,16 @@ article ol {
 }
 ```
 
-Note `li > h4` : this is a `element>element` selector and is used to select elements with a specific parent.
+Note `li > h4` selector. It is used to select elements with a _specific parent_. In this case it will select h4 tags _only_ when they are proceeded by an li.
+
+Take a moment to examine a (mostly) [complete array](<https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)>) of selector types in CSS.
 
 Note also: the transition property on the anchor selector. This is a shortcut for:
 
 ```
-    transition-property: color;
-    transition-duration: 1s;
-    transition-timing-function: linear;
+transition-property: color;
+transition-duration: 1s;
+transition-timing-function: linear;
 ```
 
 or `transition: color 0.2s linear;`
@@ -458,9 +473,9 @@ header h1 {
 }
 ```
 
-Note the transform in the inspector - doesn't work this way.
+Note the broken transform in the inspector - it doesn't work this way.
 
-Use:
+Use this format instead:
 
 `transform: translate(-100px, -80px);`
 
@@ -515,7 +530,7 @@ Note the use of svg for the background image. Examine the svg in Sublime text.
 
 Examine the site for problems in a narrow browser.
 
-Since we are attempting a mobile first design let's edit for small screen:
+Since we are attempting a mobile first design let's edit the css to display for small screen first:
 
 ```css
 header h1 {
@@ -524,11 +539,10 @@ header h1 {
     font-weight: normal;
     color: #fff;
     font-size: 5rem;
-    background-position: -20px -20px;
 }
 ```
 
-And re-add features for the large screen:
+And add features for the large screen within a media query:
 
 ```css
 @media only screen and (min-width: 640px) {
@@ -570,6 +584,10 @@ nav p {
 }
 ```
 
+Note the margin-right property on the sole paragraph and the effect it has on the positioning on the navigation links.
+
+Since we are using flexbox we _could_ have the navigation elements appear before the paragraph by simply adding `order: -1;` to the unordered list and then reversing the margin on the paragraph to `margin-right: auto;`.
+
 ### Button and Gradients
 
 ```css
@@ -609,7 +627,11 @@ nav a {
 }
 ```
 
-## Notes
+## CSS Grid
+
+Flexbox operates in a [single dimension](https://hackernoon.com/the-ultimate-css-battle-grid-vs-flexbox-d40da0449faf): x or y. CSS Grid operates in both.
+
+Our use of Flexbox to style the content columns operates in a single (horizontal or x) dimension. We can use CSS Grid but only need to specify one dimension.
 
 ```html
 <style>
