@@ -61,8 +61,6 @@ $ npm run start
 
 Review Browser Sync's interface at port 3001.
 
-==== end demo ===
-
 ---
 
 Today's repo comes with a package.json file (aka 'manifest').
@@ -80,15 +78,21 @@ npm install
   },
 ```
 
+In the terminal:
+
+`$ npm run startmac`
+
+or if your on a PC:
+
+`$ npm run startpc`
+
 Note - the startpc script will work on Macs.
 
-### Non-Terminal Alteratives
+_Non-Terminal Alteratives_
 
 There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS.
 
 ## Basilica
-
-`$ npm run start`
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
@@ -98,7 +102,7 @@ Note the `<abbr>` tag and the absence of a wrapper div (even though the design s
 
 ![Image of Basilica](FINAL.png)
 
-Normally you will start off with a few known styleguide settings. Let's use a couple of css variables:
+Normally you will start off with a few known styleguide settings. Let's define a couple of css variables:
 
 ```css
 html {
