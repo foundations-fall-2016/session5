@@ -3,12 +3,9 @@
 ## Homework
 
 * Continue with your midterms
-
-## Reading
-
-<!-- * [SASS for Web Designers](https://abookapart.com/products/sass-for-web-designers) -->
-
-* There's a new book just out on CSS which you might consider reading - [The New CSS Layout](https://abookapart.com/products/the-new-css-layout), read [the excerpt](https://alistapart.com/article/the-new-css-layout-excerpt)
+* Read (and follow along in your test editor) [this article](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228) on CSS Grids
+* See how far you can get in [Grid Garden](http://cssgridgarden.com/)
+* Watch [an intro](https://www.google.com/search?q=youtube+intro+to+npm&oq=youtube+intro+to+npm&aqs=chrome..69i57j69i64.5219j0j7&sourceid=chrome&ie=UTF-8) to Node Package Manager
 
 ## Terminal Basics
 
