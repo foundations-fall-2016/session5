@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "startmac": "browser-sync start --directory --server '1-float-nav' --files '1-float-nav'",
-    "startpc": "browser-sync start --directory --server \"1-float-nav\" --files \"1-float-nav\""
+    "startmac": "browser-sync start --directory --server 'app' --files 'app'",
+    "startpc": "browser-sync start --directory --server \"app\" --files \"app\""
   },
   "repository": {
     "type": "git",
