@@ -1,4 +1,4 @@
-# V Basilica!
+# V - Basilica!
 
 ## Homework
 
@@ -9,10 +9,13 @@
 
 ## Terminal Basics
 
-* Note: Windows users might wish to check out [CMDER](http://cmder.net) or use the terminal installed by Git.
+* Note: Windows users might wish to check out [CMDER](http://cmder.net). Most of the commands below are different on Windows or have alternatives so let's use the Git Bash terminal (installed along with Git).
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
+$ cd ~ // go to your home directory
+$ cd Desk // tab completion
+$ cd .. // go up one level
 $ ls
 $ls -al  // flags expand the command
 $ pwd
@@ -26,7 +29,11 @@ Note: tab completion, `..` and copy paste.
 
 [Node](https://nodejs.org/en/) includes NPM as part of its install
 
-Demo with [Browser Sync](https://www.browsersync.io)
+### Demo
+
+[Browser Sync](https://www.browsersync.io)
+
+[Github Repo](https://github.com/BrowserSync/browser-sync) for Browser Sync.
 
 ```bash
 $ npm init
@@ -54,7 +61,9 @@ $ npm run start
 
 Review Browser Sync's interface at port 3001.
 
-[Github Repo](https://github.com/BrowserSync/browser-sync)
+==== end demo ===
+
+---
 
 Today's repo comes with a package.json file (aka 'manifest').
 
