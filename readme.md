@@ -8,7 +8,7 @@
 
 ## Terminal Basics
 
-* Note: Windows users might wish to check out [CMDER](http://cmder.net). Most of the commands below are different on Windows or have alternatives so let's use the Git Bash terminal (installed along with Git).
+* Note for Windows users: many of the commands below are different on Windows or have alternatives. Use the Git Bash terminal (installed along with Git) for best results.
 
 ```
 $ cd <PATH> // copy and paste the folder you want to go to
