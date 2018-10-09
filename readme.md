@@ -48,13 +48,13 @@ Notes
 
 Browser Sync [CLI documentation](https://www.browsersync.io/docs/command-line)
 
-```
+```js
   "scripts": {
     "start": "browser-sync start --server 'app' --files 'app'"
   },
 ```
 
-```
+```sh
 $ npm run start
 ```
 
@@ -81,7 +81,7 @@ In the terminal:
 
 `$ npm run startmac`
 
-or if your on a PC:
+or, if you're on a PC:
 
 `$ npm run startpc`
 
@@ -89,19 +89,19 @@ Note - the startpc script will work on Macs.
 
 _Non-Terminal Alteratives_
 
-There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used in a pinch. A few of my favorites are Codekit (payware), and Koala and Scout (both free) for SASS.
+There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used. A few of my favorites are [Codekit](https://codekitapp.com/) (payware), and [Koala](http://koala-app.com/) and [Scout](http://scout-app.io/) (both free) for SASS.
 
 ## Basilica
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
-Here is an [article that addresses recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
+Here is an [article that addresses the recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
 
 ![Image of Basilica](FINAL.png)
 
-Normally you will start off with a few known styleguide settings. Let's define a couple of css variables:
+Normally you will start off with a few known styleguide settings. Let's define a couple of css variables (`app/css/styles.css`):
 
 ```css
 html {
@@ -323,14 +323,14 @@ aside {
 
 Note that, unlike previous responsive examples in this class, we are _adding_ styles to the wide screen view using `min-width`. In previous examples we were adding styles to the small screen using `max-width`.
 
-Aside: If we try to use our variable:
+Aside: If we try to use a variable as a breakpoint value it won't work:
 
 ```css
 @media only screen and (min-width: var(--breakpoint)) {
 }
 ```
 
-It doesn't work. A media query is not an elemtent selector, it does not inherit styles.
+A media query is not an element selector, it does not inherit styles.
 
 ## Flex columns
 
@@ -353,7 +353,7 @@ Remove the float property, change the column widths, remove the background image
 }
 ```
 
-See [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - we are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`.
+The [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) is used on flex children only. We are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`.
 
 Here is the long form:
 
@@ -385,15 +385,19 @@ a {
     text-decoration: none;
     transition: color 0.5s linear;
 }
+
 a:hover {
     color: #f00;
 }
+
 li > h4 {
     margin-top: 12px;
 }
+
 aside li {
     list-style: none;
 }
+
 article li,
 article ol {
     margin-left: 1rem;
@@ -403,11 +407,11 @@ article ol {
 
 Note `li > h4` selector. It is used to select elements with a _specific parent_. In this case it will select h4 tags _only_ when they are proceeded by an li.
 
-Take a moment to examine a (mostly) [complete array](<https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)>) of selector types in CSS.
+Take a moment to examine a [complete listing](<https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)>) of selector types in CSS.
 
 Note also: the transition property on the anchor selector. This is a shortcut for:
 
-```
+```css
 transition-property: color;
 transition-duration: 1s;
 transition-timing-function: linear;
@@ -482,7 +486,7 @@ header h1 {
 }
 ```
 
-Note the broken transform in the inspector - it doesn't work this way.
+Note the transform in the inspector - it doesn't work this way.
 
 Use this format instead:
 
@@ -593,7 +597,7 @@ nav p {
 }
 ```
 
-Note the margin-right property on the sole paragraph and the effect it has on the positioning on the navigation links.
+Note the margin-right property on the paragraph and the effect it has on the positioning on the navigation links.
 
 Since we are using flexbox we _could_ have the navigation elements appear before the paragraph by simply adding `order: -1;` to the unordered list and then reversing the margin on the paragraph to `margin-right: auto;`.
 
@@ -642,8 +646,7 @@ Flexbox operates in a [single dimension](https://hackernoon.com/the-ultimate-css
 
 Our use of Flexbox to style the content columns operates in a single (horizontal or x) dimension. We can use CSS Grid but only need to specify one dimension.
 
-```html
-<style>
+```css
 .content{
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -659,5 +662,4 @@ aside {
     grid-column-start: 4;
     grid-column-end: span 2;
 }
-</style>
 ```
