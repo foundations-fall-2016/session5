@@ -288,7 +288,7 @@ Apply it to the content div:
 <div class="cf content">
 ```
 
-Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the `:before` and `:after` pseudo-classes later.
+Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the :before and :after pseudo-classes later.
 
 ## Mobile First Layout with Floats
 
@@ -353,7 +353,7 @@ Remove the float property, change the column widths, remove the background image
 }
 ```
 
-The [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) is used on flex children only. We are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. The default is `0 1 auto`.
+The [flex property](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) is used on flex children only. We are using a shortcut here which includes `flex-grow, flex-shrink, and flex-basis`. Default is `Default is 0 1 auto`.
 
 Here is the long form:
 
@@ -446,6 +446,8 @@ Add the custom font (top of the css file):
 
 `@import url(futura/stylesheet.css);`
 
+Note - this requires an additional call to the server to fetch the additional css when the browser renders the file.
+
 ```css
 header h1 {
     background: url(img/basil.png) no-repeat;
@@ -466,7 +468,7 @@ header h1 {
 }
 ```
 
-When using custom fonts, setting the font weight `font-weight: normal;` is often necessary. Here it is because header tags are bold by default and we do not have a bold version of the font available.
+Note - when using custom fonts like this `font-weight: normal;` is necessary because normally header tags like h1 are bold and we do not have a bold version of the font here.
 
 We cannot see the text because we have added padding. Use transform to tweak the positioning:
 
@@ -501,7 +503,7 @@ Note the beta link in the header:
 </header>
 ```
 
-Absolutely position the beta element (we can do this in the context of the header because we applied `position: relative` to it earlier).
+Absolutely position the beta element (we can do this in the context of the header because we apply `position: relative` to it earlier).
 
 ```css
 header a.beta {
@@ -566,7 +568,7 @@ And add features for the large screen within a media query:
 }
 ```
 
-Remember: there is no hover state in touch screen devices.
+Note: there is no hover in touch screen devices.
 
 ### Navigation Flexbox
 
