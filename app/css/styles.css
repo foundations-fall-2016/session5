@@ -8,6 +8,27 @@ html {
     color: #fff;
 }
 
+
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.cf::before,
+.cf::after {
+    content: ' ';
+    display: table;
+}
+
+.cf::after {
+    clear: both;
+}
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -25,6 +46,57 @@ img {
     width: 100%;
     height: auto;
 }
+
+@media (min-width: 600px){
+     .content {
+        background: url(img/html.png) repeat-y 50% 50%;
+    }
+
+    article,
+    aside {
+        float: left;
+        width: 50%;
+        padding: 16px;
+    } 
+}
+
+
+
+footer {
+    clear: both;
+    background-color: var(--basil-green);
+    padding: 1rem;
+    border-radius: 0 0 4px 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
