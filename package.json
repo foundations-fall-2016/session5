@@ -4,7 +4,6 @@
   "description": "## Homework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "boom": "browser-sync start --directory --browser 'google chrome' --server 'app' --files 'app' "
   },
   "repository": {
