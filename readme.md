@@ -521,19 +521,19 @@ header a.beta {
 }
 ```
 
-Add a transform and animate:
+Add a hover, transform and animate:
+
+```css
+header a.beta:hover {
+    transform: rotate(0deg) scale(1.2);
+}
+```
 
 ```css
 header a.beta {
     ...
     transform: rotate(20deg);
     transition: all 1s ease;
-}
-```
-
-```css
-header a.beta:hover {
-    transform: rotate(0deg) scale(1.2);
 }
 ```
 
@@ -640,6 +640,16 @@ nav a {
 }
 ```
 
+Make all the buttons the same width. Try with and without the `inline-block`.
+
+```css
+nav a {
+    ...
+    min-width: 100px;
+    display: inline-block;
+}
+```
+
 ## CSS Grid
 
 Flexbox operates in a [single dimension](https://hackernoon.com/the-ultimate-css-battle-grid-vs-flexbox-d40da0449faf): x or y. CSS Grid operates in both.
@@ -661,5 +671,29 @@ aside {
     grid-row-start: 1;
     grid-column-start: 4;
     grid-column-end: span 2;
+}
+```
+
+Final:
+
+```css
+@media only screen and (min-width: 640px) {
+    .content{
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        grid-template-rows: 100%;
+    }
+    article {
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-column-end: span 3;
+    }
+    aside {
+        grid-row-start: 1;
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        background: #f5faef;
+        box-shadow: -4px 0px 4px #ddd;
+    }
 }
 ```
