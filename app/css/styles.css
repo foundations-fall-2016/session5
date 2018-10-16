@@ -3,29 +3,9 @@ html {
     --breakpoint: 640px;
 }
 
-html {
-    box-sizing: border-box;
-}
-
 ::selection {
     background: var(--basil-green);
     color: #fff;
-}
-
-.cf::before,
-.cf::after {
-    content: ' ';
-    display: table;
-}
-
-.cf::after {
-    clear: both;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
 }
 
 * {
@@ -41,29 +21,11 @@ body {
     margin-top: 24px;
 }
 
-.content {
-    background: url(img/html.png) repeat-y 50% 50%;
-    /*float: left;*/
-}
-
-article,
-aside {
-    float: left;
-    width: 50%;
-    padding: 16px;
-}
-
 img {
     width: 100%;
     height: auto;
 }
 
-footer {
-    clear: both;
-    background-color: var(--basil-green);
-    padding: 1rem;
-    border-radius: 0 0 4px 4px;
-}
 
 
 

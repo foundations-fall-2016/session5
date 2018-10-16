@@ -288,7 +288,7 @@ Apply it to the content div:
 <div class="cf content">
 ```
 
-Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the :before and :after pseudo-classes later.
+Examine the html in the inspector. Look for `::before` and `::after` after the content div. We'll return to the `:before` and `:after` pseudo-classes later.
 
 ## Mobile First Layout with Floats
 
