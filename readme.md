@@ -2,8 +2,6 @@
 
 ## Homework
 
-rev
-
 * Read (and follow along in your test editor) [this article](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228) on CSS Grids
 * See how far you can get in [Grid Garden](http://cssgridgarden.com/)
 * Watch [an intro](https://www.google.com/search?q=youtube+intro+to+npm&oq=youtube+intro+to+npm&aqs=chrome..69i57j69i64.5219j0j7&sourceid=chrome&ie=UTF-8) to Node Package Manager
@@ -101,7 +99,7 @@ Here is an [article that addresses the recipe schemas](https://www.foodbloggerpr
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
 
-![Image of Basilica](FINAL.png)
+![Image of Basilica](app/img/FINAL.png)
 
 Normally you will start off with a few known styleguide settings. Let's define a couple of css variables (`app/css/styles.css`):
 
