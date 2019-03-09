@@ -8,9 +8,11 @@
 
 ## Terminal Basics
 
-* Note for Windows users: many of the commands below are different on Windows or have alternatives. Use the Git Bash terminal (installed along with Git) for best results.
+* use the Git Bash terminal (installed along with Git) for best results
 
-```
+Here are the shell commands we covered last class:
+
+```sh
 $ cd <PATH> // copy and paste the folder you want to go to
 $ cd ~ // go to your home directory
 $ cd Desk // tab completion
@@ -20,28 +22,24 @@ $ls -al  // flags expand the command
 $ pwd
 ```
 
-Note: tab completion, `..` and copy paste.
-
 ## Node Package Manager
 
 [Node Package Manager](https://www.npmjs.com) is an essential part of the web design and development ecosystem.
 
 [Node](https://nodejs.org/en/) includes NPM as part of its install
 
-### Demo
-
-[Browser Sync](https://www.browsersync.io)
-
-[Github Repo](https://github.com/BrowserSync/browser-sync) for Browser Sync.
+### NPM Manifest
 
 ```bash
 $ npm init
 $ npm install browser-sync --save
+$ touch .gitignore
 ```
 
 Notes
 
 * package.json
+* package-lock.json
 * dependencies
 * node_modules folder
 * discuss the need for `.gitignore`.
@@ -49,32 +47,16 @@ Notes
 Browser Sync [CLI documentation](https://www.browsersync.io/docs/command-line)
 
 ```js
-  "scripts": {
-    "start": "browser-sync start --server 'app' --files 'app'"
-  },
+"scripts": {
+  "startmac": "browser-sync start --directory --server 'app' --files 'app'",
+  "startpc": "browser-sync start --directory --server \"app\" --files \"app\""
+},
 ```
 
-```sh
-$ npm run start
-```
-
-Review Browser Sync's interface at port 3001.
-
----
-
-Today's repo comes with a package.json file (aka 'manifest').
-
-Run `npm install`:
+If the repo comes with a package.json file (aka 'manifest') run `npm install` to install:
 
 ```
 npm install
-```
-
-```js
-  "scripts": {
-    "startmac": "browser-sync start --directory --server 'app' --files 'app'",
-    "startpc": "browser-sync start --directory --server \"app\" --files \"app\""
-  },
 ```
 
 In the terminal:
@@ -86,10 +68,6 @@ or, if you're on a PC:
 `$ npm run startpc`
 
 Note - the startpc script will work on Macs.
-
-_Non-Terminal Alteratives_
-
-There are times when setting up an NPM script seems a bit overkill. There are a [number of apps](https://graygrids.com/best-tools-resources-compile-manage-sass-less-stylus-css-preprocessors/) built on top of NPM and related technolgies which can be used. A few of my favorites are [Codekit](https://codekitapp.com/) (payware), and [Koala](http://koala-app.com/) and [Scout](http://scout-app.io/) (both free) for SASS.
 
 ## Basilica
 
@@ -118,7 +96,25 @@ These will be applied applied in our css as follows:
 
 ### Starter formatting
 
-Responsive Images:
+```css
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+  font: 100%/1.5 "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+  color: #333;
+  max-width: 840px;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+```
+
+Note the use of `max-width` on the body selector - we applied these to a div in the past.
+
+## Responsive Images
+
+[Responsive Images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images):
 
 ```css
 img {
@@ -127,28 +123,71 @@ img {
 }
 ```
 
-```css
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font: 100%/1.5 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-    color: #333;
-    max-width: 840px;
-    margin: 0 auto;
-    margin-top: 24px;
-}
+At a bare minimum, you will almost always use `width: 100%` on images and videos. 
+
+Edit the HTML to use `figure` and `figcaption` tags:
+
+```html
+<figure>
+  <img src="img/pesto.jpg" alt="Italian pesto" />
+  <figcaption>Classic, simple basil pesto recipe with fresh basil leaves, pine nuts, garlic, Romano or Parmesan cheese, extra virgin olive oil, and salt and pepper.</figcaption>
+</figure>
 ```
 
-See this [font stack](https://www.cssfontstack.com/Lucida-Grande) for improvements.
+Usually a `<figure>` is an image, illustration, diagram, code snippet, etc., that is referenced in the main flow of a document, but that can be moved to another part of the document or to an appendix without affecting the main flow.
 
-Note the use of:
+We want to display identical image content, just larger or smaller depending on the device. The standard `<img>` element only lets you point the browser to a single source file. We will use two new attributes — `srcset` and `sizes` — to provide additional source images along with hints to help the browser pick the right one.
 
-1. max-width on the body selector
-1. margin on the body element
+* Upload `pesto.jpg` to a generator such as [responsivebreakpoints.com](https://www.responsivebreakpoints.com/). Download the zip file and place the unzipped folder in the `img` directory.
 
-We applied these to a div in the past.
+```html
+<picture>
+  <img
+    sizes=" 
+    (max-width: 320px) 380px,
+    (max-width: 768px) 740px,
+    (max-width: 1024px) 980px, 
+    (max-width: 1280px) 100vw, 1280px"
+    srcset="
+    img/pesto/pesto_iodywc_c_scale,w_380.jpg 380w,
+    img/pesto/pesto_iodywc_c_scale,w_780.jpg 780w,
+    img/pesto/pesto_iodywc_c_scale,w_1069.jpg 1069w,
+    img/pesto/pesto_iodywc_c_scale,w_1337.jpg 1337w,
+    img/pesto/pesto_iodywc_c_scale,w_1380.jpg 1380w"
+
+    src="img/pesto/pesto_iodywc_c_scale,w_1380.jpg"
+
+    alt="Italian pesto"
+  >
+</picture>
+```
+
+`srcset` defines the set of images we will allow the browser to choose between, and what size each image is. 
+
+1. Am image filename
+1. A space
+1. The image's inherent width in pixels using a `w` unit (not `px`). This is the image's real size.
+
+`sizes` defines a set of media conditions (e.g. screen widths) and indicates what image size would be best to choose, when certain media conditions are true. In this case, before each comma we write:
+
+1. A media condition `(max-width:480px)` - here "when the viewport width is 480 pixels or less"
+1. A space
+1. The width of the slot the image will fill when the media condition is true (440px.). You can get this from the inspector by inspecting the image at a variety of screen widths.
+
+The browser ignores everything after the first matching condition, so be careful how you order the media conditions.
+
+With these attributes in place, the browser will:
+
+1. Look at its device width.
+1. Work out which media condition in the sizes list is the first one to be true.
+1. Look at the slot size given to that media query.
+1. Load the image referenced in the srcset list that most closely matches the chosen slot size.
+
+Using this technique can save a lot of bandwidth. Older browsers that don't support these features will just ignore them, and go ahead and load the image referenced in the src attribute as normal.
+
+You can check the results of your work by viewing the Network tab in the inspector and noting which image was downloaded at a variety of screen sizes.
+
+## Layout
 
 We'll start by using float on the two main content columns:
 
@@ -195,11 +234,13 @@ footer {
 }
 ```
 
+Try toggling the clear property in the inspector.
+
 ### Old School Faux Columns
 
 Since the two columns can be of different heights and our design calls for two columns of a different color we can not color the aside and article divs. We'll use an old technique for the moment and change it later.
 
-Examine the background image.
+Examine the background image `html.png`.
 
 ```css
 .content {
@@ -216,7 +257,7 @@ Note that we cannot see the background image. The content div has collapsed beca
 }
 ```
 
-Here we will use the clearfix method.
+We will use the clearfix method instead of float to prevent collapsing.
 
 ### ::Pseudo-elements vs :Pseudo-classes
 
@@ -309,15 +350,15 @@ aside {
 
 ```css
 @media only screen and (min-width: 600px) {
-    .content {
-        background: url('img/html.png') repeat-y 50% 50%;
-    }
-    article,
-    aside {
-        float: left;
-        width: 50%;
-        padding: 16px;
-    }
+  .content {
+    background: url('img/html.png') repeat-y 50% 50%;
+  }
+  article,
+  aside {
+    float: left;
+    width: 50%;
+    padding: 16px;
+  }
 }
 ```
 
@@ -327,6 +368,7 @@ Aside: If we try to use a variable as a breakpoint value it won't work:
 
 ```css
 @media only screen and (min-width: var(--breakpoint)) {
+  ...
 }
 ```
 
@@ -340,16 +382,16 @@ Remove the float property, change the column widths, remove the background image
 
 ```css
 @media only screen and (min-width: 640px) {
-    .content {
-        display: flex;
-    }
-    article {
-        flex: 1 0 60%;
-    }
-    aside {
-        background: #f5faef;
-        box-shadow: -4px 0px 4px #ddd;
-    }
+  .content {
+    display: flex;
+  }
+  article {
+    flex: 1 0 60%;
+  }
+  aside {
+    background: #f5faef;
+    box-shadow: -4px 0px 4px #ddd;
+  }
 }
 ```
 
@@ -365,7 +407,7 @@ article {
 }
 ```
 
-Note: Since we are not using floats we no longer need to use clearfix for the content div or clear: both for the footer.
+Note: Since we are not using floats we no longer need to use clearfix for the content div or `clear: both` for the footer.
 
 Clean up the CSS by removing the clearfix (and its class in the html).
 
@@ -374,40 +416,44 @@ Clean up the CSS by removing the clearfix (and its class in the html).
 ```css
 h2,
 h3 {
-    color: var(--basil-green);
-    margin: 8px 0;
-    font-size: 1.4rem;
-    letter-spacing: -1px;
+  color: var(--basil-green);
+  margin: 8px 0;
+  font-size: 1.4rem;
+  letter-spacing: -1px;
 }
 
 a {
-    color: #f90;
-    text-decoration: none;
-    transition: color 0.5s linear;
+  color: #f90;
+  text-decoration: none;
+  transition: color 0.5s linear;
 }
 
 a:hover {
-    color: #f00;
+  color: #f00;
 }
 
 li > h4 {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 aside li {
-    list-style: none;
+  list-style: none;
 }
 
 article li,
 article ol {
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+figcaption {
+  font-size: 0.75rem;
 }
 ```
 
-Note `li > h4` selector. It is used to select elements with a _specific parent_. In this case it will select h4 tags _only_ when they are proceeded by an li.
+Note `li > h4` selector. It is used to select elements with a _specific parent_. In this case it will select `h4` tags _only_ when they are proceeded by an `li`.
 
-Take a moment to examine a [complete listing](<https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)>) of selector types in CSS.
+Take a moment to examine a [complete listing](https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)) of selector types in CSS. Note the `:root` selector. This is the usual selector used for CSS variables.
 
 Note also: the transition property on the anchor selector. This is a shortcut for:
 
@@ -444,17 +490,19 @@ header {
 
 Add the custom font (top of the css file):
 
-`@import url(futura/stylesheet.css);`
+```css
+@import url(futura/stylesheet.css);
+```
 
 Note - this requires an additional call to the server to fetch the additional css when the browser renders the file.
 
 ```css
 header h1 {
-    background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif;
-    font-weight: normal;
-    color: #fff;
-    font-size: 5rem;
+  background: url(img/basil.png) no-repeat;
+  font-family: FuturaStdLight, sans-serif;
+  font-weight: normal;
+  color: #fff;
+  font-size: 5rem;
 }
 ```
 
@@ -462,8 +510,8 @@ Note: image is 272px by 170px.
 
 ```css
 header h1 {
-    padding-left: 260px;
-    padding-top: 90px;
+  padding-left: 260px;
+  padding-top: 90px;
     ...;
 }
 ```
@@ -490,7 +538,9 @@ Note the transform in the inspector - it doesn't work this way.
 
 Use this format instead:
 
-`transform: translate(-100px, -80px);`
+```css
+transform: translate(-100px, -80px);
+```
 
 Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations.
 
@@ -547,24 +597,24 @@ Since we are attempting a mobile first design let's edit the css to display for 
 
 ```css
 header h1 {
-    background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif;
-    font-weight: normal;
-    color: #fff;
-    font-size: 5rem;
+  background: url(img/basil.png) no-repeat;
+  font-family: FuturaStdLight, sans-serif;
+  font-weight: normal;
+  color: #fff;
+  font-size: 5rem;
 }
 ```
 
 And add features for the large screen within a media query:
 
 ```css
-@media only screen and (min-width: 640px) {
-    header h1 {
-        padding-left: 240px;
-        padding-top: 90px;
-        transform: translate(-100px, -80px);
-        background-position: top left;
-    }
+@media (min-width: 640px) {
+  header h1 {
+    padding-left: 240px;
+    padding-top: 90px;
+    transform: translate(-100px, -80px);
+    background-position: top left;
+  }
 }
 ```
 
@@ -599,18 +649,27 @@ nav p {
 
 Note the margin-right property on the paragraph and the effect it has on the positioning on the navigation links.
 
+Remove it and add `justify-content` to the flex parent:
+
+```css
+nav {
+  ...
+  justify-content: space-between;
+}
+```
+
 Since we are using flexbox we _could_ have the navigation elements appear before the paragraph by simply adding `order: -1;` to the unordered list and then reversing the margin on the paragraph to `margin-right: auto;`.
 
 ### Button and Gradients
 
 ```css
 nav a {
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 8px;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 8px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
 }
 ```
 
@@ -645,7 +704,7 @@ Make all the buttons the same width. Try with and without the `inline-block`.
 ```css
 nav a {
     ...
-    min-width: 100px;
+    min-width: 120px;
     display: inline-block;
 }
 ```
@@ -657,20 +716,25 @@ Flexbox operates in a [single dimension](https://hackernoon.com/the-ultimate-css
 Our use of Flexbox to style the content columns operates in a single (horizontal or x) dimension. We can use CSS Grid but only need to specify one dimension.
 
 ```css
-.content{
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  /*grid-template-rows: 20% 20% 20% 20% 20%;*/
-}
-article {
+@media only screen and (min-width: 640px) {
+  .content{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    /*grid-template-rows: 20% 20% 20% 20% 20%;*/
+  }
+  article {
     grid-row-start: 1;
     grid-column-start: 1;
     grid-column-end: span 3;
-}
-aside {
+  }
+  aside {
     grid-row-start: 1;
     grid-column-start: 4;
     grid-column-end: span 2;
+
+    background: #f5faef;
+    box-shadow: -4px 0px 4px #ddd;
+  }
 }
 ```
 
@@ -678,22 +742,22 @@ Final:
 
 ```css
 @media only screen and (min-width: 640px) {
-    .content{
-        display: grid;
-        grid-template-columns: 20% 20% 20% 20% 20%;
-        grid-template-rows: 100%;
-    }
-    article {
-        grid-row-start: 1;
-        grid-column-start: 1;
-        grid-column-end: span 3;
-    }
-    aside {
-        grid-row-start: 1;
-        grid-column-start: 4;
-        grid-column-end: span 2;
-        background: #f5faef;
-        box-shadow: -4px 0px 4px #ddd;
-    }
+  .content{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+  }
+  article {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+  }
+  aside {
+    grid-row-start: 1;
+    grid-column-start: 4;
+    grid-column-end: span 2;
+    background: #f5faef;
+    box-shadow: -4px 0px 4px #ddd;
+  }
 }
 ```
