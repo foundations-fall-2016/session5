@@ -8,7 +8,7 @@
 
 ## Terminal Basics
 
-* use the Git Bash terminal (installed along with Git) for best results
+Windows users should use the Git Bash terminal (installed along with Git) for best results
 
 Here are the shell commands we covered last class:
 
