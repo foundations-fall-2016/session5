@@ -88,23 +88,25 @@ Follow the instructions to create a remote and push the master branch to the rem
 
 ![Image of Basilica](app/img/FINAL.png)
 
-Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
+Open `app/index.html` and examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
 Here is an [article that addresses the recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
 
-Normally you will start off with a few known styleguide settings. Let's define a couple of css variables (`app/css/styles.css`):
+Normally you will start off with a few known styleguide settings. Let's define a couple [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) in `app/css/styles.css`:
 
 ```css
 html {
-    --basil-green: #88a308;
-    --font-stack: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif
-    --breakpoint: 640px;
+  --basil-green: #88a308;
+  --dark-gray: #333333;
+  --light-gray: #999999;
+  --max-width: 840px;
+  --breakpoint: 640px;
 }
 ```
 
-These will be applied applied in our css as follows:
+CSS variables are applied as follows:
 
 ```css
 <property>: var(--basil-green);
@@ -114,13 +116,13 @@ These will be applied applied in our css as follows:
 
 ```css
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
   font: 100%/1.5 "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
-  color: #333;
-  max-width: 840px;
+  color: var(--dark-gray);
+  max-width: var(--max-width);
   margin: 0 auto;
   margin-top: 24px;
 }
@@ -150,11 +152,13 @@ Edit the HTML to use `figure` and `figcaption` tags:
 </figure>
 ```
 
-Usually a `<figure>` is an image, illustration, diagram, code snippet, etc., that is referenced in the main flow of a document, but that can be moved to another part of the document or to an appendix without affecting the main flow.
+Note: a `<figure>` tag denotes an image, illustration, diagram, code snippet, etc. that is referenced in the main flow of a document, but that can be moved to another part of the document or to an appendix without affecting the main flow.
 
 We want to display identical image content, just larger or smaller depending on the device. The standard `<img>` element only lets you point the browser to a single source file. We will use two new attributes — `srcset` and `sizes` — to provide additional source images along with hints to help the browser pick the right one.
 
 * Upload `pesto.jpg` to a generator such as [responsivebreakpoints.com](https://www.responsivebreakpoints.com/). Download the zip file and place the unzipped folder in the `img` directory.
+
+Replace the `img` tag in index.html with the following:
 
 ```html
 <picture>
@@ -178,11 +182,13 @@ We want to display identical image content, just larger or smaller depending on 
 </picture>
 ```
 
-`srcset` defines the set of images we will allow the browser to choose between, and what size each image is. 
+`srcset` defines the set of images we will allow the browser to choose between, and what size each image is.
 
-1. Am image filename
+It consists of:
+
+1. Am image path / filename
 1. A space
-1. The image's inherent width in pixels using a `w` unit (not `px`). This is the image's real size.
+1. The image's inherent width (real size) in pixels using a `w` unit (not `px`).
 
 `sizes` defines a set of media conditions (e.g. screen widths) and indicates what image size would be best to choose, when certain media conditions are true. In this case, before each comma we write:
 
@@ -197,11 +203,13 @@ With these attributes in place, the browser will:
 1. Look at its device width.
 1. Work out which media condition in the sizes list is the first one to be true.
 1. Look at the slot size given to that media query.
-1. Load the image referenced in the srcset list that most closely matches the chosen slot size.
+1. Load the image referenced in the `srcset` list that most closely matches the chosen slot size.
 
-Using this technique can save a lot of bandwidth. Older browsers that don't support these features will just ignore them, and go ahead and load the image referenced in the src attribute as normal.
+Using this technique can save a lot of bandwidth. Older browsers that don't support these features will just ignore them, and go ahead and load the image referenced in the `src` attribute as per usual.
 
 You can check the results of your work by viewing the Network tab in the inspector and noting which image was downloaded at a variety of screen sizes.
+
+The `<picture>` tag can be used for cropping or modifying images for different media conditions _or_ offering different image formats when certain formats are not supported by all browsers. See the [example](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) on MDN.
 
 ## Layout
 
@@ -210,9 +218,9 @@ We'll start by using float on the two main content columns:
 ```css
 article,
 aside {
-    float: left;
-    width: 50%;
-    padding: 16px;
+  float: left;
+  width: 50%;
+  padding: 16px;
 }
 ```
 
@@ -243,10 +251,11 @@ Note the footer. Because both columns have been floated it can wrap.
 
 ```css
 footer {
-    clear: both;
-    background-color: var(--basil-green);
-    padding: 1rem;
-    border-radius: 0 0 4px 4px;
+  clear: both;
+  background-color: var(--basil-green);
+  padding: 1rem;
+  border-radius: 0 0 4px 4px;
+  margin-bottom: 2rem;
 }
 ```
 
@@ -260,7 +269,7 @@ Examine the background image `html.png`.
 
 ```css
 .content {
-    background: url(img/html.png) repeat-y 50% 50%;
+  background: url(img/html.png) repeat-y 50% 50%;
 }
 ```
 
@@ -277,7 +286,7 @@ We will use the clearfix method instead of float to prevent collapsing.
 
 ### ::Pseudo-elements vs :Pseudo-classes
 
-```
+```txt
 ::first-letter      :hover
 ::first-line        :visited
 ::before            :link
@@ -305,19 +314,19 @@ _Disable the float:left rule on the content before applying these._
 
 ```css
 .content:after {
-    content: 'boo';
-    display: block;
-    clear: both;
+  content: 'boo';
+  display: block;
+  clear: both;
 }
 ```
 
 ```css
 .content:after {
-    content: '.';
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 ```
 
@@ -467,7 +476,7 @@ figcaption {
 }
 ```
 
-Note `li > h4` selector. It is used to select elements with a _specific parent_. In this case it will select `h4` tags _only_ when they are proceeded by an `li`.
+Note `li > h4` [selector](https://www.w3schools.com/cssref/css_selectors.asp). It is used to select elements with a _specific parent_. In this case it will select `h4` tags _only_ when they are proceeded by an `li`. 
 
 Take a moment to examine a [complete listing](https://www.w3schools.com/cssref/trysel.asp?selector=li:nth-child(1)) of selector types in CSS. Note the `:root` selector. This is the usual selector used for CSS variables.
 
@@ -510,7 +519,7 @@ Add the custom font (top of the css file):
 @import url(futura/stylesheet.css);
 ```
 
-Note - this requires an additional call to the server to fetch the additional css when the browser renders the file.
+Note - To convert fonts to web formats see [Font Squirrel](https://www.fontsquirrel.com/tools/webfont-generator). This requires an additional call to the server to fetch the additional css when the browser renders the file.
 
 ```css
 header h1 {
@@ -540,13 +549,7 @@ We cannot see the text because we have added padding. Use transform to tweak the
 header h1 {
     transform: translateX(-100px);
     transform: translateY(-80px);
-    padding-left: 260px;
-    padding-top: 90px;
-    background: url(img/basil.png) no-repeat;
-    font-family: FuturaStdLight, sans-serif;
-    font-weight: normal;
-    color: #fff;
-    font-size: 5rem;
+    ...
 }
 ```
 
@@ -555,7 +558,10 @@ Note the transform in the inspector - it doesn't work this way.
 Use this format instead:
 
 ```css
-transform: translate(-100px, -80px);
+header h1 {
+  transform: translate(-100px, -80px);
+  ...
+}
 ```
 
 Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations.
@@ -689,6 +695,8 @@ nav a {
 }
 ```
 
+The [gradients](http://www.colorzilla.com/gradient-editor/) for the buttons:
+
 ```css
 .nav-storeit a {
     background: linear-gradient(to bottom, #fcde41 1%, #dfa910 100%);
@@ -719,9 +727,9 @@ Make all the buttons the same width. Try with and without the `inline-block`.
 
 ```css
 nav a {
-    ...
-    min-width: 120px;
-    display: inline-block;
+  ...
+  min-width: 120px;
+  display: inline-block;
 }
 ```
 
@@ -777,3 +785,5 @@ Final:
   }
 }
 ```
+
+Time permitting, see `index-grid.html`.
