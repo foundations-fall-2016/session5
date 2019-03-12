@@ -564,7 +564,7 @@ header h1 {
 }
 ```
 
-Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations. We'll see an example later.
+Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations. We'll see an example shortly.
 
 Note the beta link in the header:
 
