@@ -786,4 +786,4 @@ Final:
 }
 ```
 
-Time permitting, see `index-grid.html`.
+Time permitting, see `grid.html`.
