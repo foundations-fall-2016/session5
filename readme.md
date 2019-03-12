@@ -2,15 +2,15 @@
 
 ## Homework
 
-* Read (and follow along in your test editor) [this article](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228) on CSS Grids
+* Read [this article](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228) (and follow along in your text editor) on CSS Grids
 * See how far you can get in [Grid Garden](http://cssgridgarden.com/)
-* Watch [an intro](https://www.google.com/search?q=youtube+intro+to+npm&oq=youtube+intro+to+npm&aqs=chrome..69i57j69i64.5219j0j7&sourceid=chrome&ie=UTF-8) to Node Package Manager
+* Watch [an intro](https://youtu.be/gKyRqFgJt6k) to Node Package Manager
 
 ## Terminal Basics
 
 Windows users should use the Git Bash terminal (installed along with Git) for best results
 
-Here are the shell commands we covered last class:
+Here are some of the shell commands we covered last class:
 
 ```sh
 $ cd <PATH> // copy and paste the folder you want to go to
@@ -69,7 +69,24 @@ or, if you're on a PC:
 
 Note - the startpc script will work on Macs.
 
+## Initialize a GIT Repo
+
+```sh
+$ touch .gitignore // edit to include 'node_modules'
+$ git init
+$ git add .
+$ git commit -m 'initial commit'
+```
+
+Create a branch in VS Code.
+
+Log into [Github](http://github.com) and create a new repo.
+
+Follow the instructions to create a remote and push the master branch to the remote.
+
 ## Basilica
+
+![Image of Basilica](app/img/FINAL.png)
 
 Examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
@@ -77,13 +94,12 @@ Here is an [article that addresses the recipe schemas](https://www.foodbloggerpr
 
 Note the `<abbr>` tag and the absence of a wrapper div (even though the design shows a centered document).
 
-![Image of Basilica](app/img/FINAL.png)
-
 Normally you will start off with a few known styleguide settings. Let's define a couple of css variables (`app/css/styles.css`):
 
 ```css
 html {
     --basil-green: #88a308;
+    --font-stack: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif
     --breakpoint: 640px;
 }
 ```
