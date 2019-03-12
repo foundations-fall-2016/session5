@@ -88,8 +88,6 @@ Follow the instructions to create a remote and push the master branch to the rem
 
 ![Image of Basilica](app/img/FINAL.png)
 
-A partially finished version is located [here](http://oit2.scps.nyu.edu/~devereld/session5/).
-
 Open `app/index.html` and examine code with regards to the [recipe schema](https://schema.org/Recipe) at [schema.org](http://schema.org/docs/gs.html).
 
 Here is an [article that addresses the recipe schemas](https://www.foodbloggerpro.com/blog/article/what-is-recipe-schema/) but note that there are [many different kinds](https://schema.org/docs/full.html).
@@ -566,7 +564,7 @@ header h1 {
 }
 ```
 
-Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations. We'll see an example shortly.
+Note: transforms are an [important property](https://www.w3schools.com/cssref/css3_pr_transform.asp) when it comes to creating animations. We'll see an example later.
 
 Note the beta link in the header:
 
