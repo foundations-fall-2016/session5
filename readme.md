@@ -786,4 +786,10 @@ Final:
 }
 ```
 
-Time permitting, see `grid.html`.
+Time permitting, configure and use the SASS compiler in VS Code.
+
+## Notes
+
+```js
+
+```
