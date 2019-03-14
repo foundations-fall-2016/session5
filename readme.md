@@ -791,5 +791,15 @@ Time permitting, configure and use the SASS compiler in VS Code.
 ## Notes
 
 ```js
-
+"liveSassCompile.settings.formats": [
+    {
+      "savePath": "/myapp/public/css/",
+      "format": "expanded"
+    }
+  ],
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**",
+    "**/other/**"
+  ],
 ```

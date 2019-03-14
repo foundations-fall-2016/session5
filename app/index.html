@@ -29,7 +29,28 @@
 
 		<article itemscope itemtype="http://schema.org/Recipe">
 
-			<img src="img/pesto.jpg" />
+			<figure>
+        <picture>
+          <img
+            sizes=" 
+            (max-width: 320px) 380px,
+            (max-width: 768px) 740px,
+            (max-width: 1024px) 980px, 
+            (max-width: 1280px) 100vw, 1280px"
+            srcset="
+            img/pesto/pesto_iodywc_c_scale,w_380.jpg 380w,
+            img/pesto/pesto_iodywc_c_scale,w_780.jpg 780w,
+            img/pesto/pesto_iodywc_c_scale,w_1069.jpg 1069w,
+            img/pesto/pesto_iodywc_c_scale,w_1337.jpg 1337w,
+            img/pesto/pesto_iodywc_c_scale,w_1380.jpg 1380w"
+        
+            src="img/pesto/pesto_iodywc_c_scale,w_1380.jpg"
+        
+            alt="Italian pesto"
+          >
+        </picture>
+        <figcaption>Classic, simple basil pesto recipe with fresh basil leaves, pine nuts, garlic, Romano or Parmesan cheese, extra virgin olive oil, and salt and pepper.</figcaption>
+      </figure>
 			
 			<h2 itemprop="name">Pesto</h2>
 

@@ -1,0 +1,15 @@
+{
+  "name": "5-basilica-master",
+  "version": "1.0.0",
+  "description": "## Homework",
+  "main": "index.js",
+  "scripts": {
+    "startmac": "browser-sync start --directory --server 'app' --files 'app' --browser chrome",
+    "startpc": "browser-sync start --directory --server \"app\" --files \"app\" --browser chrome.exe"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  }
+}
